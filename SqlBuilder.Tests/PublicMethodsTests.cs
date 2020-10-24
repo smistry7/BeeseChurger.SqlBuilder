@@ -13,8 +13,11 @@ namespace SqlBuilder.Tests
         {
             var builder = new SelectBuilder()
                 .Select("*");
-            var methods = builder.GetType().GetInterface(nameof(IFromBuilder)).GetMethods(BindingFlags.Public | BindingFlags.Instance);
-            methods.Should().Contain(x => x.Name == "From");
+            var interfaceMethods = builder
+                .GetType()
+                .GetInterface(nameof(ISelectBuilder))
+                .GetMethods(BindingFlags.Public | BindingFlags.Instance);
+            interfaceMethods.Should().Contain(x => x.Name == "From");
         }
     }
 }

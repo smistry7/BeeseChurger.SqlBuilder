@@ -11,7 +11,7 @@ namespace SqlBuilder
         {
             _sql = new StringBuilder();
         }
-        public IFromBuilder Select(string select)
+        public ISelectBuilder Select(string select)
         {
             _sql.Append($"SELECT {select} ");
             return this;
@@ -71,13 +71,13 @@ namespace SqlBuilder
 
         public IFromBuilder Ascending()
         {
-            _sql.Append("ASCENDING ");
+            _sql.Append("ASC ");
             return this;
         }
 
         public IFromBuilder Descending()
         {
-            _sql.Append("DESCENDING ");
+            _sql.Append("DESC ");
             return this;
         }
 
