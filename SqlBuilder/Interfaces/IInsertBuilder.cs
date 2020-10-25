@@ -3,8 +3,7 @@
     public interface IInsertBuilder
     {
         IInsertBuilder InsertInto(string table);
-        IInsertBuilder Values(object[] values);
-        
 
+        IInsertBuilder Values(object[] values);
     }
 }

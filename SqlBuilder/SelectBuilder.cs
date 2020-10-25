@@ -1,5 +1,4 @@
 ﻿using SqlBuilder.Interfaces;
-using System;
 using System.Text;
 
 namespace SqlBuilder
@@ -7,20 +6,24 @@ namespace SqlBuilder
     public class SelectBuilder : ISelectBuilder, IFromBuilder, IWhereBuilder, IJoinBuilder, IOrderByBuilder
     {
         private StringBuilder _sql;
+
         public SelectBuilder()
         {
             _sql = new StringBuilder();
         }
+
         public ISelectBuilder Select(string select)
         {
             _sql.Append($"SELECT {select} ");
             return this;
         }
+
         public IFromBuilder From(string table)
         {
             _sql.Append($"FROM {table} ");
             return this;
         }
+
         public IWhereBuilder Where(string where)
         {
             _sql.Append($"WHERE {where} ");
@@ -32,7 +35,6 @@ namespace SqlBuilder
             _sql.Append($"AND {where} ");
             return this;
         }
-
 
         public IWhereBuilder Or(string where)
         {
@@ -54,15 +56,16 @@ namespace SqlBuilder
 
         public IJoinBuilder LeftJoin(string joiningTable)
         {
-
             _sql.Append($"LEFT JOIN {joiningTable} ");
             return this;
         }
+
         public IFromBuilder On(string on)
         {
             _sql.Append($"ON {on} ");
             return this;
         }
+
         public IOrderByBuilder OrderBy(string field)
         {
             _sql.Append($"ORDER BY {field} ");

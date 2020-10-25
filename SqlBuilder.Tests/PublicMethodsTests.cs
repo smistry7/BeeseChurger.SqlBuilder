@@ -1,8 +1,7 @@
-using System;
-using Xunit;
-using System.Reflection;
-using SqlBuilder.Interfaces;
 using FluentAssertions;
+using SqlBuilder.Interfaces;
+using System.Reflection;
+using Xunit;
 
 namespace SqlBuilder.Tests
 {
