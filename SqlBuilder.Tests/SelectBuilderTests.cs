@@ -1,5 +1,6 @@
 ﻿using FluentAssertions;
 using Newtonsoft.Json.Converters;
+using System;
 using Xunit;
 
 namespace SqlBuilder.Tests
@@ -70,6 +71,18 @@ namespace SqlBuilder.Tests
                 .Be("SELECT t1.blah FROM table1 t1 INNER JOIN table2 t2 ON t1.id = t2.t1Id " +
                 "LEFT JOIN table3 t3 ON t1.id = t3.t1Id WHERE t1.id = 4 AND t1.name like 'Shyam' ORDER BY t2.field ASC ");
 
+        }
+        [Fact]
+        public void BuildReturnsCorrectStringWithAlternateWhere()
+        {
+            var dateTime = DateTime.Now;
+            var builder = new SelectBuilder()
+                .Select("*")
+                .From("table")
+                .Where("x", 5)
+                .And("y", "john")
+                .Or("z", dateTime);
+            builder.Build().Should().Be($"SELECT * FROM table WHERE x = 5 AND y = 'john' OR z = '{dateTime}' ");
         }
     }
 }

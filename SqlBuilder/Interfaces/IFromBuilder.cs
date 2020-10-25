@@ -3,7 +3,7 @@
     public interface IFromBuilder : ISqlQueryBuilder
     {
         IWhereBuilder Where(string where);
-
+        IWhereBuilder Where(string field, object value);
         IJoinBuilder InnerJoin(string joiningTable);
 
         IJoinBuilder RightJoin(string joiningTable);
