@@ -11,5 +11,6 @@
         IJoinBuilder LeftJoin(string joiningTable);
 
         IOrderByBuilder OrderBy(string field);
+        ISqlQueryBuilder Paginate(int pageNumber, int pageSize);
     }
 }

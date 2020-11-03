@@ -1,5 +1,6 @@
 ﻿using SqlBuilder.Interfaces;
 using SqlBuilder.Misc;
+using System.ComponentModel;
 using System.Text;
 using System.Xml.Schema;
 
@@ -97,7 +98,11 @@ namespace SqlBuilder
             _sql.Append("DESC ");
             return this;
         }
-
+        public ISqlQueryBuilder Paginate(int pageNumber, int pageSize)
+        {
+            _sql.Append($"OFFSET {(pageNumber - 1) * pageSize} ROWS FETCH NEXT {pageSize} ONLY ");
+            return this;
+        }
         public string Build()
         {
             return _sql.ToString();

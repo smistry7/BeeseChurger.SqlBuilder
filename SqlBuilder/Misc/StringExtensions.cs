@@ -9,9 +9,13 @@ namespace SqlBuilder.Misc
         public static string ToSqlParameter(this object parameter)
         {
             string returnString;
-            if (parameter is string || parameter is DateTime)
+            if (parameter is string)
             {
                 returnString = $"'{parameter}'";
+            }
+            else if (parameter is DateTime)
+            {
+                returnString = $"'{((DateTime)parameter).ToString("yyyy-MM-dd h:mm tt")}";
             }
             else
             {
