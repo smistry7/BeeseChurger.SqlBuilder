@@ -15,7 +15,7 @@ namespace SqlBuilder.Misc
             }
             else if (parameter is DateTime)
             {
-                returnString = $"'{((DateTime)parameter).ToString("yyyy-MM-dd h:mm tt")}";
+                returnString = $"'{((DateTime)parameter).ToString("yyyy-MM-dd h:mm tt")}'";
             }
             else
             {

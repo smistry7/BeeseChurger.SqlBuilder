@@ -82,7 +82,7 @@ namespace SqlBuilder.Tests
                 .Where("x", 5)
                 .And("y", "john")
                 .Or("z", dateTime);
-            builder.Build().Should().Be($"SELECT * FROM table WHERE x = 5 AND y = 'john' OR z = '{dateTime}' ");
+            builder.Build().Should().Be($"SELECT * FROM table WHERE x = 5 AND y = 'john' OR z = '{dateTime.ToString("yyyy-MM-dd h:mm tt")}' ");
         }
     }
 }
