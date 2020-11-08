@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <package >
   <metadata>
-    <id>$id$</id>
-    <version>0.0.1</version>
+    <id>BeeseChurger.SqlBuilder</id>
+    <version>0.0.2</version>
     <title>BeeseChurger.SqlBuilder</title>
     <authors>SMistry7</authors>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
