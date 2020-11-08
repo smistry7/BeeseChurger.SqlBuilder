@@ -1,6 +1,4 @@
-﻿using SqlBuilder.Interfaces;
-
-namespace BeeseChurger.SqlBuilder.Builders.Select
+﻿namespace BeeseChurger.SqlBuilder.Builders.Select
 {
     public interface IFromBuilder : ISqlQueryBuilder
     {

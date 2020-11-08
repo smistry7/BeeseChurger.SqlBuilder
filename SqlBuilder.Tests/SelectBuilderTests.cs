@@ -15,7 +15,7 @@ namespace BeeseChurger.SqlBuilder.Tests
                 .From("table")
                 .Where("x = 2")
                 .And("y = 'John'");
-            builder.Build().Should().Be("SELECT * FROM table WHERE x = 2 AND y = 'John' ");
+            builder.Build().Should().Be("SELECT * FROM table WHERE x = 2 AND y = 'John' ;");
         }
 
         [Fact]
@@ -26,7 +26,7 @@ namespace BeeseChurger.SqlBuilder.Tests
                 .From("table1 t1")
                 .InnerJoin("table2 t2")
                 .On("t1.name = t2.name");
-            builder.Build().Should().Be("SELECT * FROM table1 t1 INNER JOIN table2 t2 ON t1.name = t2.name ");
+            builder.Build().Should().Be("SELECT * FROM table1 t1 INNER JOIN table2 t2 ON t1.name = t2.name ;");
         }
 
         [Fact]
@@ -38,7 +38,7 @@ namespace BeeseChurger.SqlBuilder.Tests
                 .Where("id = 1")
                 .OrderBy("AddedDate")
                 .Ascending();
-            builder.Build().Should().Be("SELECT * FROM table1 WHERE id = 1 ORDER BY AddedDate ASC ");
+            builder.Build().Should().Be("SELECT * FROM table1 WHERE id = 1 ORDER BY AddedDate ASC ;");
         }
 
         [Fact]
@@ -51,7 +51,7 @@ namespace BeeseChurger.SqlBuilder.Tests
                 .And("cor = 12")
                 .Or("x LIKE 'sad'");
 
-            builder.Build().Should().Be("SELECT * FROM wherever WHERE abc = 'xyz' AND cor = 12 OR x LIKE 'sad' ");
+            builder.Build().Should().Be("SELECT * FROM wherever WHERE abc = 'xyz' AND cor = 12 OR x LIKE 'sad' ;");
         }
 
         [Fact]
@@ -70,7 +70,7 @@ namespace BeeseChurger.SqlBuilder.Tests
                 .Ascending();
             builder.Build().Should()
                 .Be("SELECT t1.blah FROM table1 t1 INNER JOIN table2 t2 ON t1.id = t2.t1Id " +
-                "LEFT JOIN table3 t3 ON t1.id = t3.t1Id WHERE t1.id = 4 AND t1.name like 'Shyam' ORDER BY t2.field ASC ");
+                "LEFT JOIN table3 t3 ON t1.id = t3.t1Id WHERE t1.id = 4 AND t1.name like 'Shyam' ORDER BY t2.field ASC ;");
         }
 
         [Fact]
@@ -83,7 +83,17 @@ namespace BeeseChurger.SqlBuilder.Tests
                 .Where("x", 5)
                 .And("y", "john")
                 .Or("z", dateTime);
-            builder.Build().Should().Be($"SELECT * FROM table WHERE x = 5 AND y = 'john' OR z = '{dateTime.ToString("yyyy-MM-dd h:mm tt")}' ");
+            builder.Build().Should().Be($"SELECT * FROM table WHERE x = 5 AND y = 'john' OR z = '{dateTime.ToString("yyyy-MM-dd h:mm tt")}' ;");
+        }
+        [Fact]
+        public void BuildReturnsCorrectStringWithPagination()
+        {
+            var builder = new SelectBuilder()
+                .Select("*")
+                .From("table")
+                .Where("x", 3)
+                .Paginate(1, 2);
+            builder.Build().Should().Be("SELECT * FROM table WHERE x = 3 OFFSET 0 ROWS FETCH NEXT 2 ROWS ONLY ;");
         }
     }
 }

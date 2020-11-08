@@ -1,6 +1,6 @@
-﻿using BeeseChurger.SqlBuilder.Builders.Select;
+﻿using BeeseChurger.SqlBuilder.Builders;
+using BeeseChurger.SqlBuilder.Builders.Select;
 using BeeseChurger.SqlBuilder.Misc;
-using SqlBuilder.Interfaces;
 using System.Text;
 
 namespace BeeseChurger.SqlBuilder
@@ -106,12 +106,13 @@ namespace BeeseChurger.SqlBuilder
 
         public ISqlQueryBuilder Paginate(int pageNumber, int pageSize)
         {
-            _sql.Append($"OFFSET {(pageNumber - 1) * pageSize} ROWS FETCH NEXT {pageSize} ONLY ");
+            _sql.Append($"OFFSET {(pageNumber - 1) * pageSize} ROWS FETCH NEXT {pageSize} ROWS ONLY ");
             return this;
         }
 
         public string Build()
         {
+            _sql.Append(";");
             return _sql.ToString();
         }
     }

@@ -1,6 +1,4 @@
-﻿using SqlBuilder.Interfaces;
-
-namespace BeeseChurger.SqlBuilder.Builders.Select
+﻿namespace BeeseChurger.SqlBuilder.Builders.Select
 {
     public interface IWhereBuilder : ISqlQueryBuilder
     {
@@ -13,5 +11,6 @@ namespace BeeseChurger.SqlBuilder.Builders.Select
         IWhereBuilder Or(string field, object value);
 
         IOrderByBuilder OrderBy(string orderBy);
+        ISqlQueryBuilder Paginate(int pageNumber, int pageSize);
     }
 }
