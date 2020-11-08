@@ -1,4 +1,4 @@
-﻿namespace SqlBuilder.Interfaces
+﻿namespace BeeseChurger.SqlBuilder.Builders.Insert
 {
     public interface IInsertBuilder
     {

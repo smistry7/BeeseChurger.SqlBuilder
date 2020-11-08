@@ -1,6 +1,6 @@
-﻿namespace SqlBuilder.Interfaces
+﻿namespace BeeseChurger.SqlBuilder.Builders.Select
 {
-    public interface IOrderByBuilder : ISqlQueryBuilder
+    public interface IOrderByBuilder
     {
         IFromBuilder Ascending();
 

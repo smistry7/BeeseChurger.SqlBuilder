@@ -1,9 +1,9 @@
-﻿using FluentAssertions;
-using Newtonsoft.Json.Converters;
+﻿using BeeseChurger.SqlBuilder;
+using FluentAssertions;
 using System;
 using Xunit;
 
-namespace SqlBuilder.Tests
+namespace BeeseChurger.SqlBuilder.Tests
 {
     public class SelectBuilderTests
     {
@@ -40,6 +40,7 @@ namespace SqlBuilder.Tests
                 .Ascending();
             builder.Build().Should().Be("SELECT * FROM table1 WHERE id = 1 ORDER BY AddedDate ASC ");
         }
+
         [Fact]
         public void BuildReturnsCorrectStringWithAndOr()
         {
@@ -51,8 +52,8 @@ namespace SqlBuilder.Tests
                 .Or("x LIKE 'sad'");
 
             builder.Build().Should().Be("SELECT * FROM wherever WHERE abc = 'xyz' AND cor = 12 OR x LIKE 'sad' ");
-
         }
+
         [Fact]
         public void BuildReturnsCorrectStringKitchenSink()
         {
@@ -70,8 +71,8 @@ namespace SqlBuilder.Tests
             builder.Build().Should()
                 .Be("SELECT t1.blah FROM table1 t1 INNER JOIN table2 t2 ON t1.id = t2.t1Id " +
                 "LEFT JOIN table3 t3 ON t1.id = t3.t1Id WHERE t1.id = 4 AND t1.name like 'Shyam' ORDER BY t2.field ASC ");
-
         }
+
         [Fact]
         public void BuildReturnsCorrectStringWithAlternateWhere()
         {

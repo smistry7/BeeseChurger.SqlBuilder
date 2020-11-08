@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30406.217
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SqlBuilder", "SqlBuilder\SqlBuilder.csproj", "{C9690017-F991-418A-AA87-91ACBBFB543E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BeeseChurger.SqlBuilder", "SqlBuilder\BeeseChurger.SqlBuilder.csproj", "{C9690017-F991-418A-AA87-91ACBBFB543E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SqlBuilder.Tests", "SqlBuilder.Tests\SqlBuilder.Tests.csproj", "{7ED53833-CB62-4F63-8AF4-B2C7D7AACD64}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BeeseChurger.SqlBuilder.Tests", "SqlBuilder.Tests\BeeseChurger.SqlBuilder.Tests.csproj", "{7ED53833-CB62-4F63-8AF4-B2C7D7AACD64}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -1,9 +1,10 @@
+using BeeseChurger.SqlBuilder;
+using BeeseChurger.SqlBuilder.Builders.Select;
 using FluentAssertions;
-using SqlBuilder.Interfaces;
 using System.Reflection;
 using Xunit;
 
-namespace SqlBuilder.Tests
+namespace BeeseChurger.SqlBuilder.Tests
 {
     public class PublicMethodsTests
     {

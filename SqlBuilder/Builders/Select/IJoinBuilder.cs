@@ -1,6 +1,6 @@
-﻿namespace SqlBuilder.Interfaces
+﻿namespace BeeseChurger.SqlBuilder.Builders.Select
 {
-    public interface IJoinBuilder : ISqlQueryBuilder
+    public interface IJoinBuilder
     {
         IFromBuilder On(string on);
     }

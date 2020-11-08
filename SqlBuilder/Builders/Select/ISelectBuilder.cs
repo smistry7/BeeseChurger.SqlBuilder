@@ -1,6 +1,6 @@
-﻿namespace SqlBuilder.Interfaces
+﻿namespace BeeseChurger.SqlBuilder.Builders.Select
 {
-    public interface ISelectBuilder : ISqlQueryBuilder
+    public interface ISelectBuilder
     {
         ISelectBuilder Select(string select);
 

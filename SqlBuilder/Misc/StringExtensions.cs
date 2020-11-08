@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
-namespace SqlBuilder.Misc
+namespace BeeseChurger.SqlBuilder.Misc
 {
     public static class StringExtensions
     {

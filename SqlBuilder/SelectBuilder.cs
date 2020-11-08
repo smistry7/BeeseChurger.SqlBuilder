@@ -1,10 +1,9 @@
-﻿using SqlBuilder.Interfaces;
-using SqlBuilder.Misc;
-using System.ComponentModel;
+﻿using BeeseChurger.SqlBuilder.Builders.Select;
+using BeeseChurger.SqlBuilder.Misc;
+using SqlBuilder.Interfaces;
 using System.Text;
-using System.Xml.Schema;
 
-namespace SqlBuilder
+namespace BeeseChurger.SqlBuilder
 {
     public class SelectBuilder : ISelectBuilder, IFromBuilder, IWhereBuilder, IJoinBuilder, IOrderByBuilder
     {
@@ -32,31 +31,37 @@ namespace SqlBuilder
             _sql.Append($"WHERE {where} ");
             return this;
         }
+
         public IWhereBuilder Where(string field, object value)
         {
             _sql.Append($"WHERE {field} = {value.ToSqlParameter()} ");
             return this;
         }
+
         public IWhereBuilder And(string where)
         {
             _sql.Append($"AND {where} ");
             return this;
         }
+
         public IWhereBuilder And(string field, object value)
         {
             _sql.Append($"AND {field} = {value.ToSqlParameter()} ");
             return this;
         }
+
         public IWhereBuilder Or(string where)
         {
             _sql.Append($"OR {where} ");
             return this;
         }
+
         public IWhereBuilder Or(string field, object value)
         {
             _sql.Append($"OR {field} = {value.ToSqlParameter()} ");
             return this;
         }
+
         public IJoinBuilder InnerJoin(string joiningTable)
         {
             _sql.Append($"INNER JOIN {joiningTable} ");
@@ -98,11 +103,13 @@ namespace SqlBuilder
             _sql.Append("DESC ");
             return this;
         }
+
         public ISqlQueryBuilder Paginate(int pageNumber, int pageSize)
         {
             _sql.Append($"OFFSET {(pageNumber - 1) * pageSize} ROWS FETCH NEXT {pageSize} ONLY ");
             return this;
         }
+
         public string Build()
         {
             return _sql.ToString();
