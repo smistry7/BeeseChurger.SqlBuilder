@@ -1,4 +1,4 @@
-﻿namespace BeeseChurger.SqlBuilder.Builders.Select
+﻿namespace BeeseChurger.SqlBuilder.Builders.Update
 {
     public interface IWhereBuilder : ISqlQueryBuilder
     {
@@ -9,8 +9,5 @@
         IWhereBuilder Or(string where);
 
         IWhereBuilder Or(string field, object value);
-
-        IOrderByBuilder OrderBy(string orderBy);
-        ISqlQueryBuilder Paginate(int pageNumber, int pageSize);
     }
 }
