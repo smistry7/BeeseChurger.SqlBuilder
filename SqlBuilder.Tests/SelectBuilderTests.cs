@@ -1,5 +1,4 @@
-﻿using BeeseChurger.SqlBuilder;
-using FluentAssertions;
+﻿using FluentAssertions;
 using System;
 using Xunit;
 

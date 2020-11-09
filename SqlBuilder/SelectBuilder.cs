@@ -5,7 +5,7 @@ using System.Text;
 
 namespace BeeseChurger.SqlBuilder
 {
-    public class SelectBuilder : ISelectBuilder, IFromBuilder, IWhereBuilder, IJoinBuilder, IOrderByBuilder
+    public class SelectBuilder : ISqlQueryBuilder, ISelectBuilder, IFromBuilder, IWhereBuilder, IJoinBuilder, IOrderByBuilder
     {
         private StringBuilder _sql;
 
@@ -34,7 +34,10 @@ namespace BeeseChurger.SqlBuilder
 
         public IWhereBuilder Where(string field, object value)
         {
-            _sql.Append($"WHERE {field} = {value.ToSqlParameter()} ");
+            if(value != null)
+            {
+                _sql.Append($"WHERE {field} = {value.ToSqlParameter()} ");
+            }
             return this;
         }
 
@@ -46,7 +49,10 @@ namespace BeeseChurger.SqlBuilder
 
         public IWhereBuilder And(string field, object value)
         {
-            _sql.Append($"AND {field} = {value.ToSqlParameter()} ");
+            if(value != null)
+            {
+                _sql.Append($"AND {field} = {value.ToSqlParameter()} ");
+            }
             return this;
         }
 
@@ -58,7 +64,10 @@ namespace BeeseChurger.SqlBuilder
 
         public IWhereBuilder Or(string field, object value)
         {
-            _sql.Append($"OR {field} = {value.ToSqlParameter()} ");
+            if(value != null)
+            {
+                _sql.Append($"OR {field} = {value.ToSqlParameter()} ");
+            }
             return this;
         }
 
