@@ -7,11 +7,13 @@
     <Authors>SMistry7</Authors>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <projectUrl>https://github.com/smistry7/SqlBuilder</projectUrl>
-    <iconUrl>https://i.imgur.com/W55e2fMl.jpg</iconUrl>
+    <PackageIcon>BC.jpg</PackageIcon>
     <description>A simple fluent builder for building SQL expressions without the need for a database connection</description>
-    <releaseNotes>Added initial SQL select query functionality</releaseNotes>
+    <releaseNotes>Added XML documentation</releaseNotes>
     <copyright>$copyright$</copyright>
     <tags>SQL fluent builder</tags>
   </PropertyGroup>
-
+  <ItemGroup>
+        <None Include="BC.jpg" Pack="true" PackagePath=""/>
+  </ItemGroup>
 </Project>
