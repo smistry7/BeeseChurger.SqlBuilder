@@ -20,7 +20,7 @@ jobs:
       with:
         dotnet-version: 3.1.101
     - name: Create NuGet Package
-      run: dotnet pack -c Release -p:NuspecFile=BeeseChurger.SqlBuilder.nuspec
+      run: dotnet pack -c Release
       working-directory: SqlBuilder   
     - name: Publish Nuget Package
       run: dotnet nuget push **/*.nupkg --api-key ${{ secrets.NUGET_TOKEN }} --source https://api.nuget.org/v3/index.json --no-symbols true  --skip-duplicate
