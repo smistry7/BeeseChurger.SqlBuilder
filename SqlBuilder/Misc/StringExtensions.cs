@@ -6,6 +6,14 @@ namespace BeeseChurger.SqlBuilder.Misc
 {
     public static class StringExtensions
     {
+        /// <summary>
+        /// The ToSqlParameter extension method
+        /// 
+        /// Extension method to convert an object to a string 
+        /// representation of if you were to use it as a SQL parameter
+        /// </summary>
+        /// <param name="parameter">SQL Parameter to be converted</param>
+        /// <returns>String representation of the parameter as a SQL parameter</returns>
         public static string ToSqlParameter(this object parameter)
         {
             string returnString;
