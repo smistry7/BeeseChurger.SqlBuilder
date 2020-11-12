@@ -9,18 +9,22 @@ namespace BeeseChurger.SqlBuilder.Tests
         [Fact]
         public void BuildReturnsCorrectString()
         {
-            var builder = new SelectBuilder()
+            var builder = SelectBuilder
+                .Init()
                 .Select("*")
                 .From("table")
                 .Where("x = 2")
                 .And("y = 'John'");
             builder.Build().Should().Be("SELECT * FROM table WHERE x = 2 AND y = 'John' ;");
+            
+
         }
 
         [Fact]
         public void BuildReturnsCorrectStringWithJoin()
         {
-            var builder = new SelectBuilder()
+            var builder = SelectBuilder
+                .Init()
                 .Select("*")
                 .From("table1 t1")
                 .InnerJoin("table2 t2")
@@ -31,7 +35,8 @@ namespace BeeseChurger.SqlBuilder.Tests
         [Fact]
         public void BuildReturnsCorrectStringWithOrderBy()
         {
-            var builder = new SelectBuilder()
+            var builder = SelectBuilder
+                .Init()
                 .Select("*")
                 .From("table1")
                 .Where("id = 1")
@@ -43,7 +48,8 @@ namespace BeeseChurger.SqlBuilder.Tests
         [Fact]
         public void BuildReturnsCorrectStringWithAndOr()
         {
-            var builder = new SelectBuilder()
+            var builder = SelectBuilder
+                .Init()
                 .Select("*")
                 .From("wherever")
                 .Where("abc = 'xyz'")
@@ -56,7 +62,8 @@ namespace BeeseChurger.SqlBuilder.Tests
         [Fact]
         public void BuildReturnsCorrectStringKitchenSink()
         {
-            var builder = new SelectBuilder()
+            var builder = SelectBuilder
+                .Init()
                 .Select("t1.blah")
                 .From("table1 t1")
                 .InnerJoin("table2 t2")
@@ -76,7 +83,8 @@ namespace BeeseChurger.SqlBuilder.Tests
         public void BuildReturnsCorrectStringWithAlternateWhere()
         {
             var dateTime = DateTime.Now;
-            var builder = new SelectBuilder()
+            var builder = SelectBuilder
+                .Init()
                 .Select("*")
                 .From("table")
                 .Where("x", 5)
@@ -87,7 +95,8 @@ namespace BeeseChurger.SqlBuilder.Tests
         [Fact]
         public void BuildReturnsCorrectStringWithPagination()
         {
-            var builder = new SelectBuilder()
+            var builder = SelectBuilder
+                .Init()
                 .Select("*")
                 .From("table")
                 .Where("x", 3)
@@ -97,7 +106,8 @@ namespace BeeseChurger.SqlBuilder.Tests
         [Fact]
         public void BuildReturnsCorrectStringWithMultipleSelects()
         {
-            var builder = new SelectBuilder()
+            var builder = SelectBuilder
+                .Init()
                 .Select("name")
                 .Select("age")
                 .Select("DateOfBirth")

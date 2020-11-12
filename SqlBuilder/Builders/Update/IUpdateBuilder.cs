@@ -15,6 +15,6 @@ namespace BeeseChurger.SqlBuilder.Builders.Update
         /// </summary>
         /// <param name="table">String representation of the table to update</param>
         /// <returns></returns>
-        ISetBuilder Update(string table);
+        //ISetBuilder Update(string table);
     }
 }

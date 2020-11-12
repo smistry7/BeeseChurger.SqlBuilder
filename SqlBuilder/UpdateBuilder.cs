@@ -7,17 +7,19 @@ using System.Text;
 
 namespace BeeseChurger.SqlBuilder
 {
-    public class UpdateBuilder : ISqlQueryBuilder, IUpdateBuilder, ISetBuilder, IWhereBuilder
+    public sealed class UpdateBuilder : ISqlQueryBuilder, IUpdateBuilder, ISetBuilder, IWhereBuilder
     {
         private StringBuilder _sql;
-        public UpdateBuilder()
+        private UpdateBuilder(string table)
         {
             _sql = new StringBuilder();
-        }
-        public ISetBuilder Update(string table)
-        {
             _sql.Append($"UPDATE {table} SET ");
-            return this;
+        }
+
+        public static ISetBuilder Update(string table)
+        {
+            var builder = new UpdateBuilder(table);
+            return builder;
         }
         public ISetBuilder Set(string sets)
         {

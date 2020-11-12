@@ -5,16 +5,17 @@ using System.Text;
 
 namespace BeeseChurger.SqlBuilder
 {
-    public class SelectBuilder : ISqlQueryBuilder, ISelectBuilder, IFromBuilder, IWhereBuilder, IJoinBuilder, IOrderByBuilder
+    public sealed class SelectBuilder : ISqlQueryBuilder, ISelectBuilder, IFromBuilder, IWhereBuilder, IJoinBuilder, IOrderByBuilder
     {
         private StringBuilder _sql;
 
-        public SelectBuilder()
+        private SelectBuilder()
         {
             _sql = new StringBuilder();
             _sql.Append("SELECT ");
         }
-
+        public static ISelectBuilder Init() => new SelectBuilder();
+       
         public ISelectBuilder Select(string select)
         {
             _sql.Append($"{select}, ");

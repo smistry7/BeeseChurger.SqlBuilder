@@ -11,7 +11,8 @@ namespace BeeseChurger.SqlBuilder.Tests
         [Fact]
         public void ShouldBeAbleToFromAfterSelect()
         {
-            var builder = new SelectBuilder()
+            var builder = SelectBuilder
+                .Init()
                 .Select("*");
             var interfaceMethods = builder
                 .GetType()
