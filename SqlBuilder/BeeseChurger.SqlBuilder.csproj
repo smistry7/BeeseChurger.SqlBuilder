@@ -3,13 +3,14 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <PackageId>BeeseChurger.SqlBuilder</PackageId>
-    <Version>1.1.1</Version>
+    <Version>1.1.2</Version>
     <Authors>SMistry7</Authors>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <projectUrl>https://github.com/smistry7/SqlBuilder</projectUrl>
+    <RepositoryUrl>https://github.com/smistry7/SqlBuilder</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
     <PackageIcon>BC.jpg</PackageIcon>
     <description>A simple fluent builder for building SQL expressions without the need for a database connection</description>
-    <releaseNotes>Added XML documentation</releaseNotes>
+    <releaseNotes>Minor refactors and allow multiple selects in select builder</releaseNotes>
     <copyright>$copyright$</copyright>
     <tags>SQL fluent builder</tags>
   </PropertyGroup>

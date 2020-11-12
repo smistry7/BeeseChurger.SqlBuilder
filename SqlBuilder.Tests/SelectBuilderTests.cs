@@ -94,5 +94,16 @@ namespace BeeseChurger.SqlBuilder.Tests
                 .Paginate(1, 2);
             builder.Build().Should().Be("SELECT * FROM table WHERE x = 3 OFFSET 0 ROWS FETCH NEXT 2 ROWS ONLY ;");
         }
+        [Fact]
+        public void BuildReturnsCorrectStringWithMultipleSelects()
+        {
+            var builder = new SelectBuilder()
+                .Select("name")
+                .Select("age")
+                .Select("DateOfBirth")
+                .From("people")
+                .Where("age", 24);
+            builder.Build().Should().Be("SELECT name, age, DateOfBirth FROM people WHERE age = 24 ;");
+        }
     }
 }

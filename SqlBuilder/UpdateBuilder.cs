@@ -31,13 +31,13 @@ namespace BeeseChurger.SqlBuilder
         }
         public IWhereBuilder Where(string where)
         {
-            RemoveTrailingComma();
+            _sql.RemoveTrailingComma();
             _sql.Append($"WHERE {where} ");
             return this;
         }
         public IWhereBuilder Where(string field, object value)
         {
-            RemoveTrailingComma();
+            _sql.RemoveTrailingComma();
             _sql.Append($"WHERE {field} = {value.ToSqlParameter()} ");
             return this;
         }
@@ -63,16 +63,10 @@ namespace BeeseChurger.SqlBuilder
         }
         public string Build()
         {
-            RemoveTrailingComma();
+             _sql.RemoveTrailingComma();
             _sql.Append(";");
             return _sql.ToString();
         }
-        private void RemoveTrailingComma()
-        {
-            if(_sql.ToString().EndsWith(", "))
-            {
-                _sql = _sql.Remove(_sql.Length - 2, 1);
-            }
-        } 
+       
     }
 }

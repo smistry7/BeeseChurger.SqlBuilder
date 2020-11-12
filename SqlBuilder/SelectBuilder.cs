@@ -12,16 +12,18 @@ namespace BeeseChurger.SqlBuilder
         public SelectBuilder()
         {
             _sql = new StringBuilder();
+            _sql.Append("SELECT ");
         }
 
         public ISelectBuilder Select(string select)
         {
-            _sql.Append($"SELECT {select} ");
+            _sql.Append($"{select}, ");
             return this;
         }
 
         public IFromBuilder From(string table)
         {
+            _sql.RemoveTrailingComma();
             _sql.Append($"FROM {table} ");
             return this;
         }
