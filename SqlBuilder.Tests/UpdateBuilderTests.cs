@@ -1,10 +1,7 @@
 ﻿using FluentAssertions;
 using System;
-using System.Collections.Generic;
-using System.Text;
 using Xunit;
 using BeeseChurger.SqlBuilder.Misc;
-using AutoFixture.Xunit2;
 
 namespace BeeseChurger.SqlBuilder.Tests
 {
