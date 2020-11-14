@@ -7,23 +7,25 @@ using System.Text;
 
 namespace BeeseChurger.SqlBuilder
 {
-    public class InsertBuilder : IInsertBuilder, IValuesBuilder
+    public sealed class InsertBuilder : IValuesBuilder
     {
         private StringBuilder _sql;
-        public InsertBuilder()
+        private InsertBuilder(string table, IEnumerable<string> columns)
         {
             _sql = new StringBuilder();
-        }
-        public IValuesBuilder InsertInto(string table, IEnumerable<string> columns)
-        {
             _sql.Append($"INSERT INTO {table} (");
-            foreach(var column in columns)
+            foreach (var column in columns)
             {
                 _sql.Append($"{column}, ");
             }
             _sql.RemoveTrailingComma();
             _sql.Append(") ");
-            return this;
+        }
+
+        public static IValuesBuilder InsertInto(string table, IEnumerable<string> columns)
+        {
+
+            return new InsertBuilder(table, columns);
         }
 
         public ISqlQueryBuilder Values(IEnumerable<object> values)

@@ -11,8 +11,9 @@ namespace BeeseChurger.SqlBuilder.Tests
         [Fact]
         public void BuildShouldReturnCorrectString()
         {
+            
             var dt = DateTime.Now;
-            var builder = new InsertBuilder()
+            var builder = InsertBuilder
                 .InsertInto("table", new string[] { "col1", "col2", "col3" })
                 .Values(new object[] { 1, "skdajhfla", dt });
 
