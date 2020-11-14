@@ -26,7 +26,7 @@ namespace BeeseChurger.SqlBuilder
             return this;
         }
 
-        public ISqlQueryBuilder Values(object[] values)
+        public ISqlQueryBuilder Values(IEnumerable<object> values)
         {
             _sql.Append("VALUES (");
             foreach(var value in values)
