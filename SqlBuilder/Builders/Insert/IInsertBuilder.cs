@@ -1,9 +1,9 @@
-﻿namespace BeeseChurger.SqlBuilder.Builders.Insert
+﻿using System.Collections.Generic;
+
+namespace BeeseChurger.SqlBuilder.Builders.Insert
 {
     public interface IInsertBuilder
     {
-        IInsertBuilder InsertInto(string table);
-
-        IInsertBuilder Values(object[] values);
+        IValuesBuilder InsertInto(string table, IEnumerable<string> columns);
     }
 }

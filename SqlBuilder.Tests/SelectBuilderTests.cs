@@ -16,8 +16,6 @@ namespace BeeseChurger.SqlBuilder.Tests
                 .Where("x = 2")
                 .And("y = 'John'");
             builder.Build().Should().Be("SELECT * FROM table WHERE x = 2 AND y = 'John' ;");
-            
-
         }
 
         [Fact]

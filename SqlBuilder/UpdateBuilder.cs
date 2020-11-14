@@ -7,7 +7,7 @@ using System.Text;
 
 namespace BeeseChurger.SqlBuilder
 {
-    public sealed class UpdateBuilder : ISqlQueryBuilder, IUpdateBuilder, ISetBuilder, IWhereBuilder
+    public sealed class UpdateBuilder : IUpdateBuilder, ISetBuilder, IWhereBuilder
     {
         private StringBuilder _sql;
         private UpdateBuilder(string table)

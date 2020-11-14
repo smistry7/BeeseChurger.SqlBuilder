@@ -5,7 +5,7 @@ using System.Text;
 
 namespace BeeseChurger.SqlBuilder
 {
-    public sealed class SelectBuilder : ISqlQueryBuilder, ISelectBuilder, IFromBuilder, IWhereBuilder, IJoinBuilder, IOrderByBuilder
+    public sealed class SelectBuilder : ISelectBuilder, IFromBuilder, IWhereBuilder, IJoinBuilder, IOrderByBuilder
     {
         private StringBuilder _sql;
 
