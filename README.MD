@@ -8,6 +8,9 @@ Install via NuGet or via the Package manager console using
 Install-Package BeeseChurger.SqlBuilder
 ```
 
+<h3>Motivation</h3>
+The reason I made this project was because I kept coming across large SQL strings in the legacy code I've been working on and found it quite difficult to understand/refactor in the given state. This builder provides the quick refactor to ensure the SQL is valid and adheres to our coding standards and is also a lot easier to read in C# code.
+
 <h3>Usage</h3>
 <h4>SELECT Queries</h4>
 
