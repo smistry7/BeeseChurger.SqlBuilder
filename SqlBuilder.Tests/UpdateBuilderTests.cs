@@ -1,7 +1,5 @@
 ﻿using FluentAssertions;
 using System;
-using System.Collections.Generic;
-using System.Text;
 using Xunit;
 using BeeseChurger.SqlBuilder.Misc;
 
@@ -13,7 +11,7 @@ namespace BeeseChurger.SqlBuilder.Tests
         public void ShouldBuildUpdateQuery()
         {
             var dateTime = DateTime.Now;
-            var builder = new UpdateBuilder()
+            var builder = UpdateBuilder
                 .Update("dbo.table")
                 .Set("company", "dummyCompany")
                 .Set("LastUpdatedDate", dateTime)
