@@ -1,13 +1,10 @@
-﻿using BeeseChurger.SqlBuilder.Builders;
-using BeeseChurger.SqlBuilder.Builders.Update;
+﻿using BeeseChurger.SqlBuilder.Builders.Update;
 using BeeseChurger.SqlBuilder.Misc;
-using System;
-using System.Collections.Generic;
 using System.Text;
 
 namespace BeeseChurger.SqlBuilder
 {
-    public sealed class UpdateBuilder : IUpdateBuilder, ISetBuilder, IWhereBuilder
+    public sealed class UpdateBuilder : ISetBuilder, IWhereBuilder
     {
         private StringBuilder _sql;
         private UpdateBuilder(string table)
