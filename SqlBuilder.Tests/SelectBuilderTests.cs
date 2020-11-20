@@ -113,5 +113,16 @@ namespace BeeseChurger.SqlBuilder.Tests
                 .Where("age", 24);
             builder.Build().Should().Be("SELECT name, age, DateOfBirth FROM people WHERE age = 24 ;");
         }
+        [Fact]
+        public void BuildReturnsCorrectStringWithNullWhere() 
+        {
+            var builder = SelectBuilder.Init()
+                .Select("*")
+                .From("table")
+                .Where("a", null)
+                .And("b", 1);
+
+            builder.Build().Should().Be("SELECT * FROM table WHERE b = 1 ;");
+        }
     }
 }

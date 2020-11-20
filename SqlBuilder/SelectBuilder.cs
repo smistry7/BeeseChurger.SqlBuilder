@@ -15,7 +15,7 @@ namespace BeeseChurger.SqlBuilder
             _sql.Append("SELECT ");
         }
         public static ISelectBuilder Init() => new SelectBuilder();
-       
+
         public ISelectBuilder Select(string select)
         {
             _sql.Append($"{select}, ");
@@ -37,7 +37,7 @@ namespace BeeseChurger.SqlBuilder
 
         public IWhereBuilder Where(string field, object value)
         {
-            if(value != null)
+            if (value != null)
             {
                 _sql.Append($"WHERE {field} = {value.ToSqlParameter()} ");
             }
@@ -46,30 +46,59 @@ namespace BeeseChurger.SqlBuilder
 
         public IWhereBuilder And(string where)
         {
-            _sql.Append($"AND {where} ");
+            if (_sql.ToString().Contains("WHERE"))
+            {
+                _sql.Append($"AND {where} ");
+            }
+            else
+            {
+                Where(where);
+            }
+
             return this;
         }
 
         public IWhereBuilder And(string field, object value)
         {
-            if(value != null)
+            if (value != null)
             {
-                _sql.Append($"AND {field} = {value.ToSqlParameter()} ");
+                if (_sql.ToString().Contains("WHERE"))
+                {
+                    _sql.Append($"AND {field} = {value.ToSqlParameter()} ");
+                }
+                else
+                {
+                    Where(field, value);
+                }
             }
             return this;
         }
 
         public IWhereBuilder Or(string where)
         {
-            _sql.Append($"OR {where} ");
+            if (_sql.ToString().Contains("WHERE"))
+            {
+                _sql.Append($"OR {where} ");
+            }
+            else
+            {
+                Where(where);
+            }
             return this;
         }
 
         public IWhereBuilder Or(string field, object value)
         {
-            if(value != null)
+            if (value != null)
             {
-                _sql.Append($"OR {field} = {value.ToSqlParameter()} ");
+                if (_sql.ToString().Contains("WHERE"))
+                {
+                    _sql.Append($"OR {field} = {value.ToSqlParameter()} ");
+                }
+                else
+                {
+                    Where(field, value);
+                }
             }
             return this;
         }
