@@ -15,34 +15,48 @@ The reason I made this project was because I kept coming across large SQL string
 <h4>SELECT Queries</h4>
 
 ```csharp
-var builder = new SelectBuilder()
+var builder = SelectBuilder.Init()
     .Select("*")
     .From("table")
     .Where("x = 2")
     .And("y = 'John'");
-Console.WriteLine(builder.Build()) // "SELECT * FROM table WHERE x = 2 AND y = 'John' ;
+Console.WriteLine(builder.Build()); 
+// "SELECT * FROM table WHERE x = 2 AND y = 'John' ;
 
 ```
 
 
 ```csharp
-var builder = new SelectBuilder()
-    .Select("*")
+var builder = SelectBuilder.Init()
+    .Select("x")
+    .Select("y")
     .From("table")
     .Where("x", 3)
     .Paginate(1, 2);
-Console.WriteLine(builder.Build()) // SELECT * FROM table WHERE x = 3 OFFSET 0 ROWS FETCH NEXT 2 ROWS ONLY ;
+Console.WriteLine(builder.Build()); 
+// SELECT x, y FROM table WHERE x = 3 OFFSET 0 ROWS FETCH NEXT 2 ROWS ONLY ;
+
+```
+
+```csharp
+var builder = SelectBuilder.Init()
+    .Select("TOP(100) *")
+    .From("table1")
+    .InnerJoin("table2)
+    .On("table1.Id = table2.t1Id)
+Console.WriteLine(builder.Build()); 
+// SELECT TOP(100) * FROM table INNER JOIN table2 ON table1.Id = table2.t1Id ;
 
 ```
 
 <h4>UPDATE Queries </h4>
 
 ```csharp
-var builder = new UpdateBuilder()
+var builder = UpdateBuilder
     .Update("dbo.table")
     .Set("company", "dummyCompany")
     .Where("id", 5);
-Console.WriteLine(builder.Build()) // UPDATE dbo.Table SET company = 'dummyCompany' WHERE id = 5 ;
+Console.WriteLine(builder.Build()); // UPDATE dbo.Table SET company = 'dummyCompany' WHERE id = 5 ;
 
 ```
 
