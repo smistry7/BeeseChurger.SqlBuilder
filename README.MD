@@ -55,8 +55,33 @@ Console.WriteLine(builder.Build());
 var builder = UpdateBuilder
     .Update("dbo.table")
     .Set("company", "dummyCompany")
+    .Set("name", "myName")
     .Where("id", 5);
-Console.WriteLine(builder.Build()); // UPDATE dbo.Table SET company = 'dummyCompany' WHERE id = 5 ;
+Console.WriteLine(builder.Build()); 
+// UPDATE dbo.Table SET company = 'dummyCompany' WHERE id = 5 ;
+
+```
+
+
+<h4>INSERT INTO Queries </h4>
+
+```csharp
+var builder = InsertBuilder
+    .InsertInto("table", new string[] { "col1", "col2" })
+    .Value(1)
+    .Value("skdajhfla")
+Console.WriteLine(builder.Build()); 
+// INSERT INTO table (col1, col2) VALUES (1, 'skdajhfla') ;
+
+```
+
+
+```csharp
+var builder = InsertBuilder
+    .InsertInto("table", new string[] { "col1", "col2" })
+    .Values(new object[] { 1, "skdajhfla" });
+Console.WriteLine(builder.Build()); 
+// INSERT INTO table (col1, col2) VALUES (1, 'skdajhfla') ;
 
 ```
 
