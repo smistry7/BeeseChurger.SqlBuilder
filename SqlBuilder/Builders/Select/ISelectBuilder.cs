@@ -1,6 +1,6 @@
 ﻿namespace BeeseChurger.SqlBuilder.Builders.Select
 {
-    public interface ISelectBuilder
+    public interface ISelectBuilder : ISqlQueryBuilder
     {
         /// <summary>
         /// The Select method
