@@ -17,5 +17,16 @@ namespace BeeseChurger.SqlBuilder.Tests
         {
             input.ToSqlParameter().Should().Be(expected);
         }
+        [InlineData("SELECT a, b, c, ", "SELECT a, b, c ")]
+        [InlineData("VALUES (a, b, c, ", "VALUES (a, b, c ")]
+        [Theory]
+        public void RemoveTrailingComma_ShouldReturnCorrectly(object input, string expected)
+        {
+            var stringBuilder = new StringBuilder();
+            stringBuilder.Append(input);
+            stringBuilder.RemoveTrailingComma();
+            stringBuilder.ToString().Should().Be(expected);
+
+        }
     }
 }
