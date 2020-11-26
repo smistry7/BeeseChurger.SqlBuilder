@@ -12,5 +12,7 @@ namespace BeeseChurger.SqlBuilder.Builders.Insert
         /// <param name="values">Collection of values in the order of the columns previously provided.</param>
         /// <returns></returns>
         ISqlQueryBuilder Values(IEnumerable<object> values);
+
+        IValuesBuilder Value(object value);
     }
 }
