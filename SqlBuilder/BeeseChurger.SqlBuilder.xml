@@ -1,0 +1,332 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>BeeseChurger.SqlBuilder</name>
+    </assembly>
+    <members>
+        <member name="M:BeeseChurger.SqlBuilder.Builders.Insert.IValuesBuilder.Values(System.Collections.Generic.IEnumerable{System.Object})">
+            <summary>
+            The Values Method
+            
+            Use this after an insert into method to provide the values to insert into the table.
+            </summary>
+            <param name="values">Collection of values in the order of the columns previously provided.</param>
+            <returns></returns>
+        </member>
+        <member name="M:BeeseChurger.SqlBuilder.Builders.ISqlQueryBuilder.Build">
+            <summary>
+            The Build Method
+            
+            Returns the built SQL Query in string format
+            </summary>
+            <returns>String representation of the SQL Query</returns>
+        </member>
+        <member name="M:BeeseChurger.SqlBuilder.Builders.Select.IFromBuilder.Where(System.String)">
+            <summary>
+            The Where Method
+            
+            Use this method to add a where expression 
+            </summary>
+            <example>
+            This sample shows how to call the Where method.
+            <code>
+            builder.Where("Name LIKE '%abc%'");
+            </code>
+            </example>
+            <param name="where">String representation of the where expression</param>
+        </member>
+        <member name="M:BeeseChurger.SqlBuilder.Builders.Select.IFromBuilder.Where(System.String,System.Object)">
+            <summary>
+            The Where Method
+            </summary>
+            <example>
+            This example shows how to call the where method
+            <code>
+            builder.Where("Name", "john");
+            </code>
+            </example>
+            <param name="field">Field to be compared</param>
+            <param name="value">Value the field should equal</param>
+        </member>
+        <member name="M:BeeseChurger.SqlBuilder.Builders.Select.IFromBuilder.InnerJoin(System.String)">
+            <summary>
+            The Inner Join Method
+            
+            Use this method to inner join a table to the initial FROM
+            </summary>
+            <example>
+            <code>
+            builder.Select("*").From("table").InnerJoin("otherTable").On("a = b");
+            </code>
+            </example>
+            <param name="joiningTable">Table to be joined</param>
+        </member>
+        <member name="M:BeeseChurger.SqlBuilder.Builders.Select.IFromBuilder.RightJoin(System.String)">
+            <summary>
+            The Right Join Method
+            
+            Use this method to right join a table to the initial FROM
+            </summary>
+            <example>
+            <code>
+            builder.Select("*").From("table").RightJoin("otherTable").On("a = b");
+            </code>
+            </example>
+            <param name="joiningTable">Table to be joined</param>
+        </member>
+        <member name="M:BeeseChurger.SqlBuilder.Builders.Select.IFromBuilder.LeftJoin(System.String)">
+            <summary>
+            The Left Join Method
+            
+            Use this method to Left join a table to the initial FROM
+            </summary>
+            <example>
+            <code>
+            builder.Select("*").From("table").LeftJoin("otherTable").On("a = b");
+            </code>
+            </example>
+            <param name="joiningTable">Table to be joined</param>
+        </member>
+        <member name="M:BeeseChurger.SqlBuilder.Builders.Select.IFromBuilder.OrderBy(System.String)">
+            <summary>
+            The OrderBy Method
+            
+            Use this method to apply a field to order the query by
+            </summary>
+            <example>
+            <code>
+            builder.Select("*").From("table").OrderBy("a");
+            </code>
+            </example>
+            <param name="field"></param>
+        </member>
+        <member name="M:BeeseChurger.SqlBuilder.Builders.Select.IFromBuilder.Paginate(System.Int32,System.Int32)">
+            <summary>
+            The Paginate Method
+            </summary>
+            <example>
+            <code>
+            builder.Select("*").From("table").Paginate(4, 20);
+            </code>
+            </example>
+            <param name="pageNumber">integer of the page number to retrieve</param>
+            <param name="pageSize">integer of the page size</param>
+            <returns></returns>
+        </member>
+        <member name="M:BeeseChurger.SqlBuilder.Builders.Select.IJoinBuilder.On(System.String)">
+            <summary>
+            The On Method
+            
+            Use this method after a Join method to set your on clause
+            </summary>
+            <example>
+            <code>
+            builder.Select("*").From("table").LeftJoin("otherTable").On("a = b");
+            </code>
+            </example>
+            <param name="on">String representation of the on clause</param>
+        </member>
+        <member name="M:BeeseChurger.SqlBuilder.Builders.Select.IOrderByBuilder.Ascending">
+            <summary>
+            The Ascending Method
+            
+            Use this after an OrderBy Method to add an ASC to your SQL query
+            </summary>
+        </member>
+        <member name="M:BeeseChurger.SqlBuilder.Builders.Select.IOrderByBuilder.Descending">
+            <summary>
+            The Descending Method
+            
+            Use this Method after an OrderBy to add a DESC to your SQL query
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:BeeseChurger.SqlBuilder.Builders.Select.ISelectBuilder.Select(System.String)">
+            <summary>
+            The Select method
+            
+            Use this to initiate a SQL Select query
+            </summary>
+            <param name="select">String representation of the fields to be selected</param>
+            <returns>Current instance of ISelectBuilder</returns>
+        </member>
+        <member name="M:BeeseChurger.SqlBuilder.Builders.Select.ISelectBuilder.From(System.String)">
+            <summary>
+            The From Method
+            
+            Use this after a Select method to select a table to query
+            </summary>
+            <param name="table">String representation of the SQL table to be queried</param>
+            <returns>Current instance of IFromBuilder</returns>
+        </member>
+        <member name="M:BeeseChurger.SqlBuilder.Builders.Select.IWhereBuilder.And(System.String)">
+            <summary>
+            The And Method
+            
+            Use this method after a where to add an AND expression
+            </summary>
+            <param name="where">string representation of the and expression</param>
+        </member>
+        <member name="M:BeeseChurger.SqlBuilder.Builders.Select.IWhereBuilder.And(System.String,System.Object)">
+            <summary>
+            The And method
+            
+            Use this method after a where to add an AND expression
+            </summary>
+            <param name="field">Field/column to compare</param>
+            <param name="value">Value to set it equal to</param>
+        </member>
+        <member name="M:BeeseChurger.SqlBuilder.Builders.Select.IWhereBuilder.Or(System.String)">
+            <summary>
+            The Or Method
+            
+            Use this method after a where to add an OR expression
+            </summary>
+            <param name="where">string representation of the or expression</param>
+        </member>
+        <member name="M:BeeseChurger.SqlBuilder.Builders.Select.IWhereBuilder.Or(System.String,System.Object)">
+            <summary>
+            The Or method
+            
+            Use this method after a where to add an OR expression
+            </summary>
+            <param name="field">Field/column to compare</param>
+            <param name="value">Value to set it equal to</param>
+        </member>
+        <member name="M:BeeseChurger.SqlBuilder.Builders.Select.IWhereBuilder.OrderBy(System.String)">
+            <summary>
+            The OrderBy Method
+            
+            Use this method to add an Order By expression in a SQL query
+            </summary>
+            <param name="orderBy">field/column to order by</param>
+            <returns></returns>
+        </member>
+        <member name="M:BeeseChurger.SqlBuilder.Builders.Select.IWhereBuilder.Paginate(System.Int32,System.Int32)">
+            <summary>
+            The Paginate Method
+            </summary>
+            <example>
+            <code>
+            builder.Select("*").From("table").Paginate(4, 20);
+            </code>
+            </example>
+            <param name="pageNumber">integer of the page number to retrieve</param>
+            <param name="pageSize">integer of the page size</param>
+            <returns></returns>
+        </member>
+        <member name="M:BeeseChurger.SqlBuilder.Builders.Update.ISetBuilder.Set(System.String)">
+            <summary>
+            The Set Method
+            
+            Use this to set the fields/values in your update query
+            </summary>
+            <example>
+            <code>
+            builder.Update("table").Set("x = 6");
+            </code>
+            </example>
+            <param name="sets"></param>
+        </member>
+        <member name="M:BeeseChurger.SqlBuilder.Builders.Update.ISetBuilder.Set(System.String,System.Object)">
+            <summary>
+            The Set Method
+            
+            Use this to set the fields/values in your update query
+            </summary>
+            <example>
+            <code>
+            builder.Update("table").Set(x, 6);
+            </code>
+            </example>
+        </member>
+        <member name="M:BeeseChurger.SqlBuilder.Builders.Update.ISetBuilder.Where(System.String)">
+            <summary>
+            The Where Method
+            
+            Use this method to add a where expression 
+            </summary>
+            <example>
+            This sample shows how to call the Where method.
+            <code>
+            builder.Where("Name LIKE '%abc%'");
+            </code>
+            </example>
+            <param name="where">String representation of the where expression</param>
+        </member>
+        <member name="M:BeeseChurger.SqlBuilder.Builders.Update.ISetBuilder.Where(System.String,System.Object)">
+            <summary>
+            The Where Method
+            </summary>
+            <example>
+            This example shows how to call the where method
+            <code>
+            builder.Where("Name", "john");
+            </code>
+            </example>
+            <param name="field">Field to be compared</param>
+            <param name="value">Value the field should equal</param>
+        </member>
+        <member name="M:BeeseChurger.SqlBuilder.Builders.Update.IWhereBuilder.And(System.String)">
+            <summary>
+            The And Method
+            
+            Use this method after a where to add an AND expression
+            </summary>
+            <param name="where">string representation of the and expression</param>
+        </member>
+        <member name="M:BeeseChurger.SqlBuilder.Builders.Update.IWhereBuilder.And(System.String,System.Object)">
+            <summary>
+            The And method
+            
+            Use this method after a where to add an AND expression
+            </summary>
+            <param name="field">Field/column to compare</param>
+            <param name="value">Value to set it equal to</param>
+        </member>
+        <member name="M:BeeseChurger.SqlBuilder.Builders.Update.IWhereBuilder.Or(System.String)">
+            <summary>
+            The Or Method
+            
+            Use this method after a where to add an OR expression
+            </summary>
+            <param name="where">string representation of the or expression</param>
+        </member>
+        <member name="M:BeeseChurger.SqlBuilder.Builders.Update.IWhereBuilder.Or(System.String,System.Object)">
+            <summary>
+            The Or method
+            
+            Use this method after a where to add an OR expression
+            </summary>
+            <param name="field">Field/column to compare</param>
+            <param name="value">Value to set it equal to</param>
+        </member>
+        <member name="M:BeeseChurger.SqlBuilder.InsertBuilder.InsertInto(System.String,System.Collections.Generic.IEnumerable{System.String})">
+             <summary>
+             The Insert Into Method
+            
+             Use this to instantiate your insert into query with a table and collection of column names
+             </summary>
+             <param name="table">string representation of the name of the table to be inserted to</param>
+             <param name="columns">Collection containing the names of each column</param>
+             <returns>IValuesBuilder</returns>
+        </member>
+        <member name="M:BeeseChurger.SqlBuilder.Misc.StringExtensions.ToSqlParameter(System.Object)">
+            <summary>
+            The ToSqlParameter extension method
+            
+            Extension method to convert an object to a string 
+            representation of if you were to use it as a SQL parameter
+            </summary>
+            <param name="parameter">SQL Parameter to be converted</param>
+            <returns>String representation of the parameter as a SQL parameter</returns>
+        </member>
+        <member name="M:BeeseChurger.SqlBuilder.Misc.StringExtensions.RemoveTrailingComma(System.Text.StringBuilder)">
+            <summary>
+            Extension method to remove a trailing comma
+            Removes trailing comma at the second to last position in a string builder
+            </summary>
+            <param name="sb"></param>
+        </member>
+    </members>
+</doc>

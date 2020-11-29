@@ -14,7 +14,11 @@
     <copyright>MIT License</copyright>
     <tags>SQL fluent builder</tags>
   </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>D:\Code\Personal\SqlBuilder\SqlBuilder\BeeseChurger.SqlBuilder.xml</DocumentationFile>
+  </PropertyGroup>
   <ItemGroup>
-        <None Include="BC.jpg" Pack="true" PackagePath=""/>
+        <None Include="BC.jpg" Pack="true" PackagePath="" />
   </ItemGroup>
 </Project>
