@@ -3,14 +3,14 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <PackageId>BeeseChurger.SqlBuilder</PackageId>
-    <Version>1.1.3-alpha.2</Version>
+    <Version>1.1.3-beta.1</Version>
     <Authors>SMistry7</Authors>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <RepositoryUrl>https://github.com/smistry7/SqlBuilder</RepositoryUrl>
+    <RepositoryUrl>https://github.com/smistry7/BeeseChurger.SqlBuilder</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageIcon>BC.jpg</PackageIcon>
     <description>A simple fluent builder for building SQL expressions without the need for a database connection</description>
-    <releaseNotes>Use static initialiser to enforce correct chaining. Also added base Insert into builder</releaseNotes>
+    <releaseNotes>Minor refactors, added XML documentation file and basic implementation for delete builder</releaseNotes>
     <copyright>MIT License</copyright>
     <tags>SQL fluent builder</tags>
   </PropertyGroup>
