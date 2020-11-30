@@ -3,7 +3,7 @@ using System;
 using Xunit;
 using BeeseChurger.SqlBuilder.Misc;
 
-namespace BeeseChurger.SqlBuilder.Tests
+namespace BeeseChurger.SqlBuilder.Tests.Builders
 {
     public class UpdateBuilderTests
     {

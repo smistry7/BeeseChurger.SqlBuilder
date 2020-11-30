@@ -2,7 +2,7 @@
 using System;
 using Xunit;
 
-namespace BeeseChurger.SqlBuilder.Tests
+namespace BeeseChurger.SqlBuilder.Tests.Builders
 {
     public class SelectBuilderTests
     {
@@ -114,7 +114,7 @@ namespace BeeseChurger.SqlBuilder.Tests
             builder.Build().Should().Be("SELECT name, age, DateOfBirth FROM people WHERE age = 24 ;");
         }
         [Fact]
-        public void BuildReturnsCorrectStringWithNullWhere() 
+        public void BuildReturnsCorrectStringWithNullWhere()
         {
             var builder = SelectBuilder.Init()
                 .Select("*")
