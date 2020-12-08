@@ -42,8 +42,8 @@ Console.WriteLine(builder.Build());
 var builder = SelectBuilder.Init()
     .Select("TOP(100) *")
     .From("table1")
-    .InnerJoin("table2)
-    .On("table1.Id = table2.t1Id)
+    .InnerJoin("table2")
+    .On("table1.Id = table2.t1Id")
 Console.WriteLine(builder.Build()); 
 // SELECT TOP(100) * FROM table INNER JOIN table2 ON table1.Id = table2.t1Id ;
 
