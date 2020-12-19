@@ -13,53 +13,72 @@ namespace BeeseChurger.SqlBuilder
             _sql.Append($"UPDATE {table} SET ");
         }
 
+        /// <inheritdoc/>
         public static ISetBuilder Update(string table)
         {
             var builder = new UpdateBuilder(table);
             return builder;
         }
+
+        /// <inheritdoc/>
         public ISetBuilder Set(string sets)
         {
             _sql.Append($"{sets} ");
             return this;
         }
+
+        /// <inheritdoc/>
         public ISetBuilder Set(string field, object value)
         {
             _sql.Append($"{field} = {value.ToSqlParameter()}, ");
             return this;
         }
+
+        /// <inheritdoc/>
         public IWhereBuilder Where(string where)
         {
             _sql.RemoveTrailingComma();
             _sql.Append($"WHERE {where} ");
             return this;
         }
+
+        /// <inheritdoc/>
         public IWhereBuilder Where(string field, object value)
         {
             _sql.RemoveTrailingComma();
             _sql.Append($"WHERE {field} = {value.ToSqlParameter()} ");
             return this;
         }
+
+        /// <inheritdoc/>
         public IWhereBuilder And(string where)
         {
             _sql.Append($"AND {where} ");
             return this;
         }
+
+        /// <inheritdoc/>
         public IWhereBuilder And(string field, object value)
         {
             _sql.Append($"AND {field} = {value.ToSqlParameter()} ");
             return this;
         }
+
+        /// <inheritdoc/>
         public IWhereBuilder Or(string where)
         {
             _sql.Append($"AND {where} ");
             return this;
         }
+
+        /// <inheritdoc/>
         public IWhereBuilder Or(string field, object value)
         {
             _sql.Append($"AND {field} = {value.ToSqlParameter()} ");
             return this;
         }
+
+        /// <inheritdoc/>
         public string Build()
         {
              _sql.RemoveTrailingComma();

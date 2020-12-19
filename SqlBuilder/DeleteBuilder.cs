@@ -19,12 +19,14 @@ namespace BeeseChurger.SqlBuilder
         public static IDeleteFromBuilder DeleteFrom(string table) => new DeleteBuilder(table);
 
 
+        /// <inheritdoc/>
         public IWhereBuilder Where(string where)
         {
             _sql.Append($"WHERE {where} ");
             return this;
         }
 
+        /// <inheritdoc/>
         public IWhereBuilder Where(string field, object value)
         {
             if (value != null)
@@ -34,6 +36,7 @@ namespace BeeseChurger.SqlBuilder
             return this;
         }
 
+        /// <inheritdoc/>
         public IWhereBuilder And(string where)
         {
             if (_sql.ToString().Contains("WHERE"))
@@ -48,6 +51,7 @@ namespace BeeseChurger.SqlBuilder
             return this;
         }
 
+        /// <inheritdoc/>
         public IWhereBuilder And(string field, object value)
         {
             if (value != null)
@@ -64,6 +68,7 @@ namespace BeeseChurger.SqlBuilder
             return this;
         }
 
+        /// <inheritdoc/>
         public IWhereBuilder Or(string where)
         {
             if (_sql.ToString().Contains("WHERE"))
@@ -77,6 +82,7 @@ namespace BeeseChurger.SqlBuilder
             return this;
         }
 
+        /// <inheritdoc/>
         public IWhereBuilder Or(string field, object value)
         {
             if (value != null)
@@ -93,6 +99,7 @@ namespace BeeseChurger.SqlBuilder
             return this;
         }
 
+        /// <inheritdoc/>
         public string Build()
         {
             _sql.Append(";");

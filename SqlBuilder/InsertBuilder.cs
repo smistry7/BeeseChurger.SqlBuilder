@@ -37,17 +37,20 @@ namespace BeeseChurger.SqlBuilder
             return new InsertBuilder(table, columns);
         }
 
+        /// <inheritdoc/>
         public IValuesBuilder Value(object value)
         {
             _values.Add(value);
             return this;
         }
 
+        /// <inheritdoc/>
         public ISqlQueryBuilder Values(IEnumerable<object> values)
         {
             AppendValues(values);
             return this;
         }
+        /// <inheritdoc/>
         public string Build()
         {
             if (_values.Count() > 0)
