@@ -82,7 +82,7 @@
             </summary>
             <returns>String representation of the SQL Query</returns>
         </member>
-        <member name="M:BeeseChurger.SqlBuilder.Builders.Select.IFromBuilder.Where(System.String)">
+        <member name="M:BeeseChurger.SqlBuilder.Builders.Select.IFromBuilder.Where(System.FormattableString)">
             <summary>
             The Where Method
             
@@ -220,7 +220,7 @@
             <param name="table">String representation of the SQL table to be queried</param>
             <returns>Current instance of IFromBuilder</returns>
         </member>
-        <member name="M:BeeseChurger.SqlBuilder.Builders.Select.IWhereBuilder.And(System.String)">
+        <member name="M:BeeseChurger.SqlBuilder.Builders.Select.IWhereBuilder.And(System.FormattableString)">
             <summary>
             The And Method
             
@@ -237,7 +237,7 @@
             <param name="field">Field/column to compare</param>
             <param name="value">Value to set it equal to</param>
         </member>
-        <member name="M:BeeseChurger.SqlBuilder.Builders.Select.IWhereBuilder.Or(System.String)">
+        <member name="M:BeeseChurger.SqlBuilder.Builders.Select.IWhereBuilder.Or(System.FormattableString)">
             <summary>
             The Or Method
             
@@ -276,7 +276,7 @@
             <param name="pageSize">integer of the page size</param>
             <returns></returns>
         </member>
-        <member name="M:BeeseChurger.SqlBuilder.Builders.Update.ISetBuilder.Set(System.String)">
+        <member name="M:BeeseChurger.SqlBuilder.Builders.Update.ISetBuilder.Set(System.FormattableString)">
             <summary>
             The Set Method
             
@@ -301,7 +301,7 @@
             </code>
             </example>
         </member>
-        <member name="M:BeeseChurger.SqlBuilder.Builders.Update.ISetBuilder.Where(System.String)">
+        <member name="M:BeeseChurger.SqlBuilder.Builders.Update.ISetBuilder.Where(System.FormattableString)">
             <summary>
             The Where Method
             
@@ -328,7 +328,7 @@
             <param name="field">Field to be compared</param>
             <param name="value">Value the field should equal</param>
         </member>
-        <member name="M:BeeseChurger.SqlBuilder.Builders.Update.IWhereBuilder.And(System.String)">
+        <member name="M:BeeseChurger.SqlBuilder.Builders.Update.IWhereBuilder.And(System.FormattableString)">
             <summary>
             The And Method
             
@@ -345,7 +345,7 @@
             <param name="field">Field/column to compare</param>
             <param name="value">Value to set it equal to</param>
         </member>
-        <member name="M:BeeseChurger.SqlBuilder.Builders.Update.IWhereBuilder.Or(System.String)">
+        <member name="M:BeeseChurger.SqlBuilder.Builders.Update.IWhereBuilder.Or(System.FormattableString)">
             <summary>
             The Or Method
             
@@ -362,6 +362,32 @@
             <param name="field">Field/column to compare</param>
             <param name="value">Value to set it equal to</param>
         </member>
+        <member name="T:BeeseChurger.SqlBuilder.DeleteBuilder">
+            <summary>
+            Fluent builder class to build a delete from SQL query.
+            </summary>
+        </member>
+        <member name="M:BeeseChurger.SqlBuilder.DeleteBuilder.Where(System.String)">
+            <inheritdoc/>
+        </member>
+        <member name="M:BeeseChurger.SqlBuilder.DeleteBuilder.Where(System.String,System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:BeeseChurger.SqlBuilder.DeleteBuilder.And(System.String)">
+            <inheritdoc/>
+        </member>
+        <member name="M:BeeseChurger.SqlBuilder.DeleteBuilder.And(System.String,System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:BeeseChurger.SqlBuilder.DeleteBuilder.Or(System.String)">
+            <inheritdoc/>
+        </member>
+        <member name="M:BeeseChurger.SqlBuilder.DeleteBuilder.Or(System.String,System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:BeeseChurger.SqlBuilder.DeleteBuilder.Build">
+            <inheritdoc/>
+        </member>
         <member name="M:BeeseChurger.SqlBuilder.InsertBuilder.InsertInto(System.String,System.Collections.Generic.IEnumerable{System.String})">
              <summary>
              The Insert Into Method
@@ -371,6 +397,15 @@
              <param name="table">string representation of the name of the table to be inserted to</param>
              <param name="columns">Collection containing the names of each column</param>
              <returns>IValuesBuilder</returns>
+        </member>
+        <member name="M:BeeseChurger.SqlBuilder.InsertBuilder.Value(System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:BeeseChurger.SqlBuilder.InsertBuilder.Values(System.Collections.Generic.IEnumerable{System.Object})">
+            <inheritdoc/>
+        </member>
+        <member name="M:BeeseChurger.SqlBuilder.InsertBuilder.Build">
+            <inheritdoc/>
         </member>
         <member name="M:BeeseChurger.SqlBuilder.Misc.StringExtensions.ToSqlParameter(System.Object)">
             <summary>
@@ -388,6 +423,87 @@
             Removes trailing comma at the second to last position in a string builder
             </summary>
             <param name="sb"></param>
+        </member>
+        <member name="M:BeeseChurger.SqlBuilder.SelectBuilder.Select(System.String)">
+            <inheritdoc/>
+        </member>
+        <member name="M:BeeseChurger.SqlBuilder.SelectBuilder.From(System.String)">
+            <inheritdoc/>
+        </member>
+        <member name="M:BeeseChurger.SqlBuilder.SelectBuilder.Where(System.FormattableString)">
+            <inheritdoc/>
+        </member>
+        <member name="M:BeeseChurger.SqlBuilder.SelectBuilder.Where(System.String,System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:BeeseChurger.SqlBuilder.SelectBuilder.And(System.FormattableString)">
+            <inheritdoc/>
+        </member>
+        <member name="M:BeeseChurger.SqlBuilder.SelectBuilder.And(System.String,System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:BeeseChurger.SqlBuilder.SelectBuilder.Or(System.FormattableString)">
+            <inheritdoc/>
+        </member>
+        <member name="M:BeeseChurger.SqlBuilder.SelectBuilder.Or(System.String,System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:BeeseChurger.SqlBuilder.SelectBuilder.InnerJoin(System.String)">
+            <inheritdoc/>
+        </member>
+        <member name="M:BeeseChurger.SqlBuilder.SelectBuilder.RightJoin(System.String)">
+            <inheritdoc/>
+        </member>
+        <member name="M:BeeseChurger.SqlBuilder.SelectBuilder.LeftJoin(System.String)">
+            <inheritdoc/>
+        </member>
+        <member name="M:BeeseChurger.SqlBuilder.SelectBuilder.On(System.String)">
+            <inheritdoc/>
+        </member>
+        <member name="M:BeeseChurger.SqlBuilder.SelectBuilder.OrderBy(System.String)">
+            <inheritdoc/>
+        </member>
+        <member name="M:BeeseChurger.SqlBuilder.SelectBuilder.Ascending">
+            <inheritdoc/>
+        </member>
+        <member name="M:BeeseChurger.SqlBuilder.SelectBuilder.Descending">
+            <inheritdoc/>
+        </member>
+        <member name="M:BeeseChurger.SqlBuilder.SelectBuilder.Paginate(System.Int32,System.Int32)">
+            <inheritdoc/>
+        </member>
+        <member name="M:BeeseChurger.SqlBuilder.SelectBuilder.Build">
+            <inheritdoc/>
+        </member>
+        <member name="M:BeeseChurger.SqlBuilder.UpdateBuilder.Update(System.String)">
+            <inheritdoc/>
+        </member>
+        <member name="M:BeeseChurger.SqlBuilder.UpdateBuilder.Set(System.FormattableString)">
+            <inheritdoc/>
+        </member>
+        <member name="M:BeeseChurger.SqlBuilder.UpdateBuilder.Set(System.String,System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:BeeseChurger.SqlBuilder.UpdateBuilder.Where(System.FormattableString)">
+            <inheritdoc/>
+        </member>
+        <member name="M:BeeseChurger.SqlBuilder.UpdateBuilder.Where(System.String,System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:BeeseChurger.SqlBuilder.UpdateBuilder.And(System.FormattableString)">
+            <inheritdoc/>
+        </member>
+        <member name="M:BeeseChurger.SqlBuilder.UpdateBuilder.And(System.String,System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:BeeseChurger.SqlBuilder.UpdateBuilder.Or(System.FormattableString)">
+            <inheritdoc/>
+        </member>
+        <member name="M:BeeseChurger.SqlBuilder.UpdateBuilder.Or(System.String,System.Object)">
+            <inheritdoc/>
+        </member>
+        <member name="M:BeeseChurger.SqlBuilder.UpdateBuilder.Build">
+            <inheritdoc/>
         </member>
     </members>
 </doc>

@@ -7,6 +7,9 @@ using System.Text;
 
 namespace BeeseChurger.SqlBuilder
 {
+    /// <summary>
+    /// Fluent builder class to build a delete from SQL query.
+    /// </summary>
     public sealed class DeleteBuilder : IDeleteFromBuilder, IWhereBuilder, ISqlQueryBuilder
     {
         private StringBuilder _sql;

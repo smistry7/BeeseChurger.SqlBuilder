@@ -13,8 +13,8 @@ namespace BeeseChurger.SqlBuilder.Tests.Builders
                 .Init()
                 .Select("*")
                 .From("table")
-                .Where("x = 2")
-                .And("y = 'John'");
+                .Where($"x = 2")
+                .And($"y = 'John'");
             builder.Build().Should().Be("SELECT * FROM table WHERE x = 2 AND y = 'John' ;");
         }
 
@@ -37,7 +37,7 @@ namespace BeeseChurger.SqlBuilder.Tests.Builders
                 .Init()
                 .Select("*")
                 .From("table1")
-                .Where("id = 1")
+                .Where($"id = 1")
                 .OrderBy("AddedDate")
                 .Ascending();
             builder.Build().Should().Be("SELECT * FROM table1 WHERE id = 1 ORDER BY AddedDate ASC ;");
@@ -50,9 +50,9 @@ namespace BeeseChurger.SqlBuilder.Tests.Builders
                 .Init()
                 .Select("*")
                 .From("wherever")
-                .Where("abc = 'xyz'")
-                .And("cor = 12")
-                .Or("x LIKE 'sad'");
+                .Where($"abc = 'xyz'")
+                .And($"cor = 12")
+                .Or($"x LIKE 'sad'");
 
             builder.Build().Should().Be("SELECT * FROM wherever WHERE abc = 'xyz' AND cor = 12 OR x LIKE 'sad' ;");
         }
@@ -68,8 +68,8 @@ namespace BeeseChurger.SqlBuilder.Tests.Builders
                 .On("t1.id = t2.t1Id")
                 .LeftJoin("table3 t3")
                 .On("t1.id = t3.t1Id")
-                .Where("t1.id = 4")
-                .And("t1.name like 'Shyam'")
+                .Where($"t1.id = 4")
+                .And($"t1.name like 'Shyam'")
                 .OrderBy("t2.field")
                 .Ascending();
             builder.Build().Should()

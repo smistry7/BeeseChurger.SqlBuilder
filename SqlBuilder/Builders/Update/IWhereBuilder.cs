@@ -1,4 +1,6 @@
-﻿namespace BeeseChurger.SqlBuilder.Builders.Update
+﻿using System;
+
+namespace BeeseChurger.SqlBuilder.Builders.Update
 {
     public interface IWhereBuilder : ISqlQueryBuilder
     {
@@ -8,7 +10,7 @@
         /// Use this method after a where to add an AND expression
         /// </summary>
         /// <param name="where">string representation of the and expression</param>
-        IWhereBuilder And(string where);
+        IWhereBuilder And(FormattableString where);
 
         /// <summary>
         /// The And method
@@ -25,7 +27,7 @@
         /// Use this method after a where to add an OR expression
         /// </summary>
         /// <param name="where">string representation of the or expression</param>
-        IWhereBuilder Or(string where);
+        IWhereBuilder Or(FormattableString where);
         /// <summary>
         /// The Or method
         /// 

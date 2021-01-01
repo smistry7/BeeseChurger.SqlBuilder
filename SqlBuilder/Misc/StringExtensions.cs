@@ -34,6 +34,10 @@ namespace BeeseChurger.SqlBuilder.Misc
             {
                 returnString = parameter.ToString();
             }
+            if (returnString.ContainsSqlInjection())
+            {
+                throw new SqlInjectionException($"SQL Injection attempt: {returnString}");
+            }
             return returnString;
         }
         public static string ToSqlParameter(this object str, SqlDbType dbType)
@@ -53,6 +57,10 @@ namespace BeeseChurger.SqlBuilder.Misc
                 default:
                     returnString = $"{str}";
                     break;
+            }
+            if (returnString.ContainsSqlInjection())
+            {
+                throw new SqlInjectionException($"SQL Injection attempt: {returnString}");
             }
             return returnString;
         }

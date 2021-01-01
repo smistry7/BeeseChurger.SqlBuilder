@@ -1,5 +1,6 @@
 ﻿using BeeseChurger.SqlBuilder.Builders.Update;
 using BeeseChurger.SqlBuilder.Misc;
+using System;
 using System.Text;
 
 namespace BeeseChurger.SqlBuilder
@@ -21,8 +22,9 @@ namespace BeeseChurger.SqlBuilder
         }
 
         /// <inheritdoc/>
-        public ISetBuilder Set(string sets)
+        public ISetBuilder Set(FormattableString sets)
         {
+            CheckSqlInjection(sets);
             _sql.Append($"{sets} ");
             return this;
         }
@@ -35,8 +37,9 @@ namespace BeeseChurger.SqlBuilder
         }
 
         /// <inheritdoc/>
-        public IWhereBuilder Where(string where)
+        public IWhereBuilder Where(FormattableString where)
         {
+            CheckSqlInjection(where);
             _sql.RemoveTrailingComma();
             _sql.Append($"WHERE {where} ");
             return this;
@@ -51,8 +54,9 @@ namespace BeeseChurger.SqlBuilder
         }
 
         /// <inheritdoc/>
-        public IWhereBuilder And(string where)
+        public IWhereBuilder And(FormattableString where)
         {
+            CheckSqlInjection(where);
             _sql.Append($"AND {where} ");
             return this;
         }
@@ -65,8 +69,9 @@ namespace BeeseChurger.SqlBuilder
         }
 
         /// <inheritdoc/>
-        public IWhereBuilder Or(string where)
+        public IWhereBuilder Or(FormattableString where)
         {
+            CheckSqlInjection(where);
             _sql.Append($"AND {where} ");
             return this;
         }
@@ -85,6 +90,12 @@ namespace BeeseChurger.SqlBuilder
             _sql.Append(";");
             return _sql.ToString();
         }
-       
+        private void CheckSqlInjection(FormattableString where)
+        {
+            if (where.ContainsSqlInjection())
+            {
+                throw new SqlInjectionException($"Sql injection attempt : {where.ToString()}");
+            }
+        }
     }
 }

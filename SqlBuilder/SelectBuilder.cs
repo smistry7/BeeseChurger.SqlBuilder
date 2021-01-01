@@ -1,6 +1,7 @@
 ﻿using BeeseChurger.SqlBuilder.Builders;
 using BeeseChurger.SqlBuilder.Builders.Select;
 using BeeseChurger.SqlBuilder.Misc;
+using System;
 using System.Text;
 
 namespace BeeseChurger.SqlBuilder
@@ -32,11 +33,14 @@ namespace BeeseChurger.SqlBuilder
         }
 
         /// <inheritdoc/>
-        public IWhereBuilder Where(string where)
+        public IWhereBuilder Where(FormattableString where)
         {
+            CheckSqlInjection(where);
             _sql.Append($"WHERE {where} ");
             return this;
         }
+
+        
 
         /// <inheritdoc/>
         public IWhereBuilder Where(string field, object value)
@@ -49,8 +53,9 @@ namespace BeeseChurger.SqlBuilder
         }
 
         /// <inheritdoc/>
-        public IWhereBuilder And(string where)
+        public IWhereBuilder And(FormattableString where)
         {
+            CheckSqlInjection(where);
             if (_sql.ToString().Contains("WHERE"))
             {
                 _sql.Append($"AND {where} ");
@@ -81,8 +86,9 @@ namespace BeeseChurger.SqlBuilder
         }
 
         /// <inheritdoc/>
-        public IWhereBuilder Or(string where)
+        public IWhereBuilder Or(FormattableString where)
         {
+            CheckSqlInjection(where);
             if (_sql.ToString().Contains("WHERE"))
             {
                 _sql.Append($"OR {where} ");
@@ -160,6 +166,7 @@ namespace BeeseChurger.SqlBuilder
             return this;
         }
 
+
         /// <inheritdoc/>
         public ISqlQueryBuilder Paginate(int pageNumber, int pageSize)
         {
@@ -172,6 +179,14 @@ namespace BeeseChurger.SqlBuilder
         {
             _sql.Append(";");
             return _sql.ToString();
+        }
+
+        private void CheckSqlInjection(FormattableString where)
+        {
+            if (where.ContainsSqlInjection())
+            {
+                throw new SqlInjectionException($"Sql injection attempt : {where.ToString()}");
+            }
         }
     }
 }
