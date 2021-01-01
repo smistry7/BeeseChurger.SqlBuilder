@@ -18,7 +18,7 @@ namespace BeeseChurger.SqlBuilder.Builders.Delete
         /// </code>
         /// </example>
         /// <param name="where">String representation of the where expression</param>
-        IWhereBuilder Where(string where);
+        IWhereBuilder Where(FormattableString where);
         /// <summary>
         /// The Where Method
         /// </summary>

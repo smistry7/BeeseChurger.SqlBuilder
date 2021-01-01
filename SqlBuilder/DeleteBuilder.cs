@@ -23,7 +23,7 @@ namespace BeeseChurger.SqlBuilder
 
 
         /// <inheritdoc/>
-        public IWhereBuilder Where(string where)
+        public IWhereBuilder Where(FormattableString where)
         {
             _sql.Append($"WHERE {where} ");
             return this;
@@ -40,7 +40,7 @@ namespace BeeseChurger.SqlBuilder
         }
 
         /// <inheritdoc/>
-        public IWhereBuilder And(string where)
+        public IWhereBuilder And(FormattableString where)
         {
             if (_sql.ToString().Contains("WHERE"))
             {
@@ -72,7 +72,7 @@ namespace BeeseChurger.SqlBuilder
         }
 
         /// <inheritdoc/>
-        public IWhereBuilder Or(string where)
+        public IWhereBuilder Or(FormattableString where)
         {
             if (_sql.ToString().Contains("WHERE"))
             {
