@@ -17,10 +17,10 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-     <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\$(AssemblyName).xml</DocumentationFile>
-</PropertyGroup>
+    <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\$(AssemblyName).xml</DocumentationFile>
   </PropertyGroup>
+
   <ItemGroup>
-        <None Include="BC.jpg" Pack="true" PackagePath="" />
+    <None Include="BC.jpg" Pack="true" PackagePath="" />
   </ItemGroup>
 </Project>
