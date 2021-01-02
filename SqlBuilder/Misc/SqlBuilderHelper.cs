@@ -88,12 +88,15 @@ namespace BeeseChurger.SqlBuilder.Misc
                 sb = sb.Remove(sb.Length - 2, 1);
             }
         }
-
+        /// <summary>
+        /// Check for SQLInjection and throw Exception if attempt is found.
+        /// </summary>
+        /// <param name="where">Formattable string to be passed to the database.</param>
         public static void CheckSqlInjection(FormattableString where)
         {
             if (where.ContainsSqlInjection())
             {
-                throw new SqlInjectionException($"Sql injection attempt : {where.ToString()}");
+                throw new SqlInjectionException($"Sql injection attempt : {where}");
             }
         }
     }

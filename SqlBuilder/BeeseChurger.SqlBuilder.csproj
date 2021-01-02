@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <PackageId>BeeseChurger.SqlBuilder</PackageId>
-    <Version>2.0.0-alpha.2</Version>
+    <Version>2.0.0-alpha.3</Version>
     <Authors>SMistry7</Authors>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <RepositoryUrl>https://github.com/smistry7/BeeseChurger.SqlBuilder</RepositoryUrl>
@@ -13,10 +13,12 @@
     <releaseNotes>Added SQL Injection prevention code</releaseNotes>
     <copyright>MIT License</copyright>
     <tags>SQL fluent builder</tags>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DocumentationFile>D:\Code\Personal\SqlBuilder\SqlBuilder\BeeseChurger.SqlBuilder.xml</DocumentationFile>
+     <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\$(AssemblyName).xml</DocumentationFile>
+</PropertyGroup>
   </PropertyGroup>
   <ItemGroup>
         <None Include="BC.jpg" Pack="true" PackagePath="" />
