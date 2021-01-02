@@ -2,6 +2,9 @@
 
 namespace BeeseChurger.SqlBuilder.Builders.Select
 {
+    /// <summary>
+    /// The IFromBuilder interface
+    /// </summary>
     public interface IFromBuilder : ISqlQueryBuilder
     {
         /// <summary>

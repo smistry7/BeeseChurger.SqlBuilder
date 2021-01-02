@@ -2,6 +2,9 @@
 
 namespace BeeseChurger.SqlBuilder.Builders.Delete
 {
+    /// <summary>
+    /// The IWhereBuilder Interface
+    /// </summary>
     public interface IWhereBuilder : ISqlQueryBuilder
     {
         /// <summary>

@@ -4,8 +4,18 @@ using System.Text;
 
 namespace BeeseChurger.SqlBuilder.Misc
 {
+    /// <summary>
+    /// ParameterValidator class
+    /// 
+    /// This class contains extension methods to validate SQL parameters.
+    /// </summary>
     public static class ParameterValidator
     {
+        /// <summary>
+        /// Check if the given string contains any SQL injection keywords.
+        /// </summary>
+        /// <param name="userInput">String to be passed as a parameter.</param>
+        /// <returns>True if it does contain any of the keywords, False if not.</returns>
         public static bool ContainsSqlInjection(this string userInput)
         {
             bool isSQLInjection = false;
@@ -25,7 +35,11 @@ namespace BeeseChurger.SqlBuilder.Misc
             }
             return isSQLInjection;
         }
-
+        /// <summary>
+        /// Checks all arguments in a formattable string for SQL injection.
+        /// </summary>
+        /// <param name="str">Formattable string to be passed to the database.</param>
+        /// <returns>True if it does contain any of the keywords, False if not.</returns>
         public static bool ContainsSqlInjection(this FormattableString str)
         {
             bool containsSqlInjection = false;

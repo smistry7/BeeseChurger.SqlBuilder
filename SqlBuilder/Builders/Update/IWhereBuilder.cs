@@ -2,6 +2,9 @@
 
 namespace BeeseChurger.SqlBuilder.Builders.Update
 {
+    /// <summary>
+    /// The IWhereBuilder interface.
+    /// </summary>
     public interface IWhereBuilder : ISqlQueryBuilder
     {
         /// <summary>

@@ -2,6 +2,9 @@
 
 namespace BeeseChurger.SqlBuilder.Builders.Update
 {
+    /// <summary>
+    /// The ISetBuilder interface.
+    /// </summary>
     public interface ISetBuilder : ISqlQueryBuilder
     {
         /// <summary>

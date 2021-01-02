@@ -4,6 +4,9 @@ using System.Text;
 
 namespace BeeseChurger.SqlBuilder.Builders.Delete
 {
+    /// <summary>
+    /// The DeleteFromBuilder Interface
+    /// </summary>
     public interface IDeleteFromBuilder : ISqlQueryBuilder
     {
         /// <summary>
