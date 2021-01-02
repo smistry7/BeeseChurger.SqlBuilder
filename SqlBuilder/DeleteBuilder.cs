@@ -19,6 +19,13 @@ namespace BeeseChurger.SqlBuilder
             _sql.Append($"DELETE FROM {table} ");
         }
 
+        /// <summary>
+        /// The DeleteFrom method
+        /// 
+        /// To be used to initialise a new DeleteFrom SQL statement.
+        /// </summary>
+        /// <param name="table">string containing the table to be deleted from.</param>
+        /// <returns>IDeleteFromBuilder to add to the statement.</returns>
         public static IDeleteFromBuilder DeleteFrom(string table) => new DeleteBuilder(table);
 
 

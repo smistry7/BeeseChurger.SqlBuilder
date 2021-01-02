@@ -433,6 +433,15 @@
             Fluent builder class to build a delete from SQL query.
             </summary>
         </member>
+        <member name="M:BeeseChurger.SqlBuilder.DeleteBuilder.DeleteFrom(System.String)">
+            <summary>
+            The DeleteFrom method
+            
+            To be used to initialise a new DeleteFrom SQL statement.
+            </summary>
+            <param name="table">string containing the table to be deleted from.</param>
+            <returns>IDeleteFromBuilder to add to the statement.</returns>
+        </member>
         <member name="M:BeeseChurger.SqlBuilder.DeleteBuilder.Where(System.FormattableString)">
             <inheritdoc/>
         </member>
@@ -453,6 +462,11 @@
         </member>
         <member name="M:BeeseChurger.SqlBuilder.DeleteBuilder.Build">
             <inheritdoc/>
+        </member>
+        <member name="T:BeeseChurger.SqlBuilder.InsertBuilder">
+            <summary>
+            The InsertBuilder fluent builder class.
+            </summary>
         </member>
         <member name="M:BeeseChurger.SqlBuilder.InsertBuilder.InsertInto(System.String,System.Collections.Generic.IEnumerable{System.String})">
              <summary>
@@ -494,6 +508,39 @@
             <param name="str">Formattable string to be passed to the database.</param>
             <returns>True if it does contain any of the keywords, False if not.</returns>
         </member>
+        <member name="T:BeeseChurger.SqlBuilder.Misc.SqlBuilderHelper">
+            <summary>
+            The SqlBuilderHelper class
+            </summary>
+        </member>
+        <member name="M:BeeseChurger.SqlBuilder.Misc.SqlBuilderHelper.ToSqlParameter(System.Object)">
+            <summary>
+            The ToSqlParameter extension method
+            
+            Extension method to convert an object to a string 
+            representation of if you were to use it as a SQL parameter
+            </summary>
+            <param name="parameter">SQL Parameter to be converted</param>
+            <returns>String representation of the parameter as a SQL parameter</returns>
+        </member>
+        <member name="M:BeeseChurger.SqlBuilder.Misc.SqlBuilderHelper.ToSqlParameter(System.Object,System.Data.SqlDbType)">
+            <summary>
+            The ToSqlParameter extension method
+            
+            Extension method to convert an object to a string 
+            representation of if you were to use it as a SQL parameter
+            </summary>
+            <param name="parameter">Sql Parameter to be converted.</param>
+            <param name="dbType">Database type that it should be passed as.</param>
+            <returns>String representation of the parameter to be passed to the database.</returns>
+        </member>
+        <member name="M:BeeseChurger.SqlBuilder.Misc.SqlBuilderHelper.RemoveTrailingComma(System.Text.StringBuilder)">
+            <summary>
+            Extension method to remove a trailing comma
+            Removes trailing comma at the second to last position in a string builder
+            </summary>
+            <param name="sb"></param>
+        </member>
         <member name="T:BeeseChurger.SqlBuilder.Misc.SqlInjectionException">
             <summary>
             The SqlInjectionException class.
@@ -507,33 +554,18 @@
         <member name="M:BeeseChurger.SqlBuilder.Misc.SqlInjectionException.#ctor(System.String)">
             <inheritdoc/>
         </member>
-        <member name="M:BeeseChurger.SqlBuilder.Misc.StringExtensions.ToSqlParameter(System.Object)">
+        <member name="T:BeeseChurger.SqlBuilder.SelectBuilder">
             <summary>
-            The ToSqlParameter extension method
-            
-            Extension method to convert an object to a string 
-            representation of if you were to use it as a SQL parameter
+            The SelectBuilder fluent builder class.
             </summary>
-            <param name="parameter">SQL Parameter to be converted</param>
-            <returns>String representation of the parameter as a SQL parameter</returns>
         </member>
-        <member name="M:BeeseChurger.SqlBuilder.Misc.StringExtensions.ToSqlParameter(System.Object,System.Data.SqlDbType)">
+        <member name="M:BeeseChurger.SqlBuilder.SelectBuilder.Init">
             <summary>
-            The ToSqlParameter extension method
+            The Init Method 
             
-            Extension method to convert an object to a string 
-            representation of if you were to use it as a SQL parameter
+            Use this to initialise a new SelectBuilder statement.
             </summary>
-            <param name="parameter">Sql Parameter to be converted.</param>
-            <param name="dbType">Database type that it should be passed as.</param>
-            <returns>String representation of the parameter to be passed to the database.</returns>
-        </member>
-        <member name="M:BeeseChurger.SqlBuilder.Misc.StringExtensions.RemoveTrailingComma(System.Text.StringBuilder)">
-            <summary>
-            Extension method to remove a trailing comma
-            Removes trailing comma at the second to last position in a string builder
-            </summary>
-            <param name="sb"></param>
+            <returns></returns>
         </member>
         <member name="M:BeeseChurger.SqlBuilder.SelectBuilder.Select(System.String)">
             <inheritdoc/>
@@ -585,6 +617,11 @@
         </member>
         <member name="M:BeeseChurger.SqlBuilder.SelectBuilder.Build">
             <inheritdoc/>
+        </member>
+        <member name="T:BeeseChurger.SqlBuilder.UpdateBuilder">
+            <summary>
+            The UpdateBuilder fluent builder class 
+            </summary>
         </member>
         <member name="M:BeeseChurger.SqlBuilder.UpdateBuilder.Update(System.String)">
             <inheritdoc/>

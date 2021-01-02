@@ -6,6 +6,9 @@ using System.Text;
 
 namespace BeeseChurger.SqlBuilder
 {
+    /// <summary>
+    /// The SelectBuilder fluent builder class.
+    /// </summary>
     public sealed class SelectBuilder : ISelectBuilder, IFromBuilder, IWhereBuilder, IJoinBuilder, IOrderByBuilder
     {
         private StringBuilder _sql;
@@ -15,6 +18,12 @@ namespace BeeseChurger.SqlBuilder
             _sql = new StringBuilder();
             _sql.Append("SELECT ");
         }
+        /// <summary>
+        /// The Init Method 
+        /// 
+        /// Use this to initialise a new SelectBuilder statement.
+        /// </summary>
+        /// <returns></returns>
         public static ISelectBuilder Init() => new SelectBuilder();
 
         /// <inheritdoc/>
@@ -35,7 +44,7 @@ namespace BeeseChurger.SqlBuilder
         /// <inheritdoc/>
         public IWhereBuilder Where(FormattableString where)
         {
-            CheckSqlInjection(where);
+            SqlBuilderHelper.CheckSqlInjection(where);
             _sql.Append($"WHERE {where} ");
             return this;
         }
@@ -55,7 +64,7 @@ namespace BeeseChurger.SqlBuilder
         /// <inheritdoc/>
         public IWhereBuilder And(FormattableString where)
         {
-            CheckSqlInjection(where);
+            SqlBuilderHelper.CheckSqlInjection(where);
             if (_sql.ToString().Contains("WHERE"))
             {
                 _sql.Append($"AND {where} ");
@@ -88,7 +97,7 @@ namespace BeeseChurger.SqlBuilder
         /// <inheritdoc/>
         public IWhereBuilder Or(FormattableString where)
         {
-            CheckSqlInjection(where);
+            SqlBuilderHelper.CheckSqlInjection(where);
             if (_sql.ToString().Contains("WHERE"))
             {
                 _sql.Append($"OR {where} ");
@@ -181,12 +190,6 @@ namespace BeeseChurger.SqlBuilder
             return _sql.ToString();
         }
 
-        private void CheckSqlInjection(FormattableString where)
-        {
-            if (where.ContainsSqlInjection())
-            {
-                throw new SqlInjectionException($"Sql injection attempt : {where.ToString()}");
-            }
-        }
+   
     }
 }

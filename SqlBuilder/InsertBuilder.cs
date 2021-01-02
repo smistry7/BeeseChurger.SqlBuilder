@@ -8,6 +8,9 @@ using System.Text;
 
 namespace BeeseChurger.SqlBuilder
 {
+    /// <summary>
+    /// The InsertBuilder fluent builder class.
+    /// </summary>
     public sealed class InsertBuilder : IValuesBuilder
     {
         private StringBuilder _sql;

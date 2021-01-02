@@ -5,7 +5,10 @@ using System.Text;
 
 namespace BeeseChurger.SqlBuilder.Misc
 {
-    public static class StringExtensions
+    /// <summary>
+    /// The SqlBuilderHelper class
+    /// </summary>
+    public static class SqlBuilderHelper
     {
         /// <summary>
         /// The ToSqlParameter extension method
@@ -83,6 +86,14 @@ namespace BeeseChurger.SqlBuilder.Misc
             if (sb.ToString().EndsWith(", "))
             {
                 sb = sb.Remove(sb.Length - 2, 1);
+            }
+        }
+
+        public static void CheckSqlInjection(FormattableString where)
+        {
+            if (where.ContainsSqlInjection())
+            {
+                throw new SqlInjectionException($"Sql injection attempt : {where.ToString()}");
             }
         }
     }
