@@ -23,6 +23,7 @@ namespace BeeseChurger.SqlBuilder.Misc
             string returnString;
             if (parameter is string)
             {
+                parameter = parameter.ToString().HandleSqlInjection();
                 returnString = $"'{parameter}'";
             }
             else if (parameter is DateTime)
@@ -36,10 +37,6 @@ namespace BeeseChurger.SqlBuilder.Misc
             else
             {
                 returnString = parameter.ToString();
-            }
-            if (returnString.ContainsSqlInjection())
-            {
-                throw new SqlInjectionException($"SQL Injection attempt: {returnString}");
             }
             return returnString;
         }
@@ -58,6 +55,7 @@ namespace BeeseChurger.SqlBuilder.Misc
             switch (dbType)
             {
                 case SqlDbType.VarChar:
+                    parameter = parameter.ToString().HandleSqlInjection();
                     returnString = $"'{parameter}'";
                     break;
                 case SqlDbType.DateTime:
@@ -69,10 +67,6 @@ namespace BeeseChurger.SqlBuilder.Misc
                 default:
                     returnString = $"{parameter}";
                     break;
-            }
-            if (returnString.ContainsSqlInjection())
-            {
-                throw new SqlInjectionException($"SQL Injection attempt: {returnString}");
             }
             return returnString;
         }
@@ -86,17 +80,6 @@ namespace BeeseChurger.SqlBuilder.Misc
             if (sb.ToString().EndsWith(", "))
             {
                 sb = sb.Remove(sb.Length - 2, 1);
-            }
-        }
-        /// <summary>
-        /// Check for SQLInjection and throw Exception if attempt is found.
-        /// </summary>
-        /// <param name="where">Formattable string to be passed to the database.</param>
-        public static void CheckSqlInjection(FormattableString where)
-        {
-            if (where.ContainsSqlInjection())
-            {
-                throw new SqlInjectionException($"Sql injection attempt : {where}");
             }
         }
     }

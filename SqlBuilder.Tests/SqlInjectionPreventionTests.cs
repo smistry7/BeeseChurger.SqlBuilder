@@ -12,51 +12,46 @@ namespace BeeseChurger.SqlBuilder.Tests
         [Theory]
         [InlineData(";DELETE FROM table;")]
         [InlineData("DROP table;")]
-        [InlineData("update table set x = 1")]
+        [InlineData("'--")]
 
-        public void SelectContainingAttackShouldThrow(string injectionParam)
+        public void ShouldRemoveColons(string injectionParam)
         {
             
-            Action action1 = () => SelectBuilder.Init()
+            var sql = SelectBuilder.Init()
                 .Select("*")
                 .From("table")
                 .Where($"x LIKE {injectionParam}")
                 .Build();
-            action1.Should().Throw<SqlInjectionException>();
+            sql.Should().Contain(";", Exactly.Once());
 
-            Action action2 = () => SelectBuilder.Init()
+            var sql2 = SelectBuilder.Init()
                 .Select("*")
                 .From("table")
                 .Where("x", injectionParam)
                 .Build();
-            action2.Should().Throw<SqlInjectionException>();
+            sql2.Should().Contain(";", Exactly.Once());
         }
         [Theory]
-        [InlineData(";DELETE FROM table;")]
-        [InlineData("DROP table;")]
-        [InlineData("update table set x = 1")]
+        [InlineData("'@@a = 43")]
 
-        public void InsertContainingAttackShouldThrow(string injectionParam)
+        public void AtsShouldBeRemoved(string injectionParam)
         {
 
-            Action action = () => InsertBuilder
+            var sql = InsertBuilder
                 .InsertInto("table")
                 .Value(injectionParam)
                 .Build();
-            action.Should().Throw<SqlInjectionException>();
+            sql.Should().NotContain("@");
         }
         [Theory]
-        [InlineData(";DELETE FROM table;")]
-        [InlineData("DROP table;")]
-        [InlineData("update table set x = 1")]
-
-        public void UpdateContainingAttackShouldThrow(string injectionParam)
+        [InlineData("shyam's egg")]
+        public void SingleQuotesShouldBeEscaped(string injectionParam)
         {
 
-            Action action = () => UpdateBuilder.Update("table")
+             var sql = UpdateBuilder.Update("table")
                 .Set("name", injectionParam)
                 .Build();
-            action.Should().Throw<SqlInjectionException>();
+            sql.Should().Be("UPDATE table SET name = 'shyam''s egg' ;");
         }
     }
 }

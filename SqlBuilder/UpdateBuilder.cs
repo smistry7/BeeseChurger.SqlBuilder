@@ -27,8 +27,8 @@ namespace BeeseChurger.SqlBuilder
         /// <inheritdoc/>
         public ISetBuilder Set(FormattableString sets)
         {
-            SqlBuilderHelper.CheckSqlInjection(sets);
-            _sql.Append($"{sets} ");
+            
+            _sql.Append($"{sets.HandleSqlInjection()} ");
             return this;
         }
 
@@ -42,9 +42,8 @@ namespace BeeseChurger.SqlBuilder
         /// <inheritdoc/>
         public IWhereBuilder Where(FormattableString where)
         {
-            SqlBuilderHelper.CheckSqlInjection(where);
             _sql.RemoveTrailingComma();
-            _sql.Append($"WHERE {where} ");
+            _sql.Append($"WHERE {where.HandleSqlInjection()} ");
             return this;
         }
 
@@ -59,8 +58,7 @@ namespace BeeseChurger.SqlBuilder
         /// <inheritdoc/>
         public IWhereBuilder And(FormattableString where)
         {
-            SqlBuilderHelper.CheckSqlInjection(where);
-            _sql.Append($"AND {where} ");
+            _sql.Append($"AND {where.HandleSqlInjection()} ");
             return this;
         }
 
@@ -74,8 +72,7 @@ namespace BeeseChurger.SqlBuilder
         /// <inheritdoc/>
         public IWhereBuilder Or(FormattableString where)
         {
-            SqlBuilderHelper.CheckSqlInjection(where);
-            _sql.Append($"AND {where} ");
+            _sql.Append($"AND {where.HandleSqlInjection()} ");
             return this;
         }
 

@@ -13,7 +13,7 @@ namespace BeeseChurger.SqlBuilder.Tests.Builders
                 .Init()
                 .Select("*")
                 .From("table")
-                .Where($"x = 2")
+                .Where("x", 2)
                 .And($"y = 'John'");
             builder.Build().Should().Be("SELECT * FROM table WHERE x = 2 AND y = 'John' ;");
         }
