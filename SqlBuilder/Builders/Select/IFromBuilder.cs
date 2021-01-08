@@ -1,5 +1,10 @@
-﻿namespace BeeseChurger.SqlBuilder.Builders.Select
+﻿using System;
+
+namespace BeeseChurger.SqlBuilder.Builders.Select
 {
+    /// <summary>
+    /// The IFromBuilder interface
+    /// </summary>
     public interface IFromBuilder : ISqlQueryBuilder
     {
         /// <summary>
@@ -14,7 +19,7 @@
         /// </code>
         /// </example>
         /// <param name="where">String representation of the where expression</param>
-        IWhereBuilder Where(string where);
+        IWhereBuilder Where(FormattableString where);
         /// <summary>
         /// The Where Method
         /// </summary>

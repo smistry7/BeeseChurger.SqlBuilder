@@ -1,5 +1,10 @@
-﻿namespace BeeseChurger.SqlBuilder.Builders.Update
+﻿using System;
+
+namespace BeeseChurger.SqlBuilder.Builders.Update
 {
+    /// <summary>
+    /// The ISetBuilder interface.
+    /// </summary>
     public interface ISetBuilder : ISqlQueryBuilder
     {
         /// <summary>
@@ -13,7 +18,7 @@
         /// </code>
         /// </example>
         /// <param name="sets"></param>
-        ISetBuilder Set(string sets);
+        ISetBuilder Set(FormattableString sets);
             /// <summary>
         /// The Set Method
         /// 
@@ -37,7 +42,7 @@
         /// </code>
         /// </example>
         /// <param name="where">String representation of the where expression</param>
-        IWhereBuilder Where(string where);
+        IWhereBuilder Where(FormattableString where);
         /// <summary>
         /// The Where Method
         /// </summary>

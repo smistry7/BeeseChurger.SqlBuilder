@@ -1,9 +1,9 @@
 ﻿using System;
 
-namespace BeeseChurger.SqlBuilder.Builders.Select
+namespace BeeseChurger.SqlBuilder.Builders.Delete
 {
     /// <summary>
-    /// The IWhereBuilder interface.
+    /// The IWhereBuilder Interface
     /// </summary>
     public interface IWhereBuilder : ISqlQueryBuilder
     {
@@ -37,25 +37,6 @@ namespace BeeseChurger.SqlBuilder.Builders.Select
         /// <param name="field">Field/column to compare</param>
         /// <param name="value">Value to set it equal to</param>
         IWhereBuilder Or(string field, object value);
-        /// <summary>
-        /// The OrderBy Method
-        /// 
-        /// Use this method to add an Order By expression in a SQL query
-        /// </summary>
-        /// <param name="orderBy">field/column to order by</param>
-        /// <returns></returns>
-        IOrderByBuilder OrderBy(string orderBy);
-        /// <summary>
-        /// The Paginate Method
-        /// </summary>
-        /// <example>
-        /// <code>
-        /// builder.Select("*").From("table").Paginate(4, 20);
-        /// </code>
-        /// </example>
-        /// <param name="pageNumber">integer of the page number to retrieve</param>
-        /// <param name="pageSize">integer of the page size</param>
-        /// <returns></returns>
-        ISqlQueryBuilder Paginate(int pageNumber, int pageSize);
+
     }
 }

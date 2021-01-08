@@ -16,7 +16,7 @@ namespace BeeseChurger.SqlBuilder.Tests.Builders
                 .Set("company", "dummyCompany")
                 .Set("LastUpdatedDate", dateTime)
                 .Where("id", 5)
-                .And("foreignId LIKE 'AB15'");
+                .And($"foreignId LIKE 'AB15'");
             builder.Build().Should()
                 .Be($"UPDATE dbo.table SET company = 'dummyCompany', " +
                 $"LastUpdatedDate = {dateTime.ToSqlParameter()} WHERE id = 5 AND foreignId LIKE 'AB15' ;");

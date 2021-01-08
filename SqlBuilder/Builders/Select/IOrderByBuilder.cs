@@ -1,5 +1,8 @@
 ﻿namespace BeeseChurger.SqlBuilder.Builders.Select
 {
+    /// <summary>
+    /// The IOrderByBuilder interface.
+    /// </summary>
     public interface IOrderByBuilder
     {
         /// <summary>
