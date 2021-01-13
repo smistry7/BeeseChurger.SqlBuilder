@@ -26,7 +26,7 @@ namespace BeeseChurger.SqlBuilder.Misc
             {
                 if (CheckString.IndexOf(sqlCheckList[i], StringComparison.OrdinalIgnoreCase) >= 0)
                 {
-                    CheckString = userInput.Replace(sqlCheckList[i], "");
+                    CheckString = CheckString.Replace(sqlCheckList[i], "");
                 }
             }
             return CheckString;

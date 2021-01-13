@@ -46,11 +46,12 @@ namespace BeeseChurger.SqlBuilder.Tests.Builders
         [Fact]
         public void BuildReturnsCorrectStringWithAndOr()
         {
+            var a = "xyz";
             var builder = SelectBuilder
                 .Init()
                 .Select("*")
                 .From("wherever")
-                .Where($"abc = 'xyz'")
+                .Where($"abc = {a}")
                 .And($"cor = 12")
                 .Or($"x LIKE 'sad'");
 

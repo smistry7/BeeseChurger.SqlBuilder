@@ -13,6 +13,7 @@ namespace BeeseChurger.SqlBuilder.Tests
         [InlineData(";DELETE FROM table;")]
         [InlineData("DROP table;")]
         [InlineData("'--")]
+        [InlineData("';SELECT * FROM table;")]
 
         public void ShouldRemoveColons(string injectionParam)
         {
