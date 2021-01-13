@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data;
+using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 
@@ -8,7 +10,7 @@ namespace BeeseChurger.SqlBuilder.Misc
     /// <summary>
     /// The SqlBuilderHelper class
     /// </summary>
-    public static class SqlBuilderHelper
+    public static class SqlBuilderExtensions
     {
         /// <summary>
         /// The ToSqlParameter extension method
@@ -81,6 +83,31 @@ namespace BeeseChurger.SqlBuilder.Misc
             {
                 sb = sb.Remove(sb.Length - 2, 1);
             }
+        }
+
+        /// <summary>
+        /// This can be used to convert a list to an in clause when using any of the Builders
+        /// </summary>
+        /// <typeparam name="T">Type of collection being used</typeparam>
+        /// <param name="list"></param>
+        /// <returns>String representation to be passed to the database as an in clause</returns>
+        public static string ToInClause<T>(this IEnumerable<T> list)
+        {
+            var inClause = "(";
+            var arr = list.ToArray();
+            for (int i=0; i < arr.Length; i++)
+            {
+                inClause += arr[i].ToSqlParameter();
+                if(i != arr.Length - 1)
+                {
+                    inClause += ',';
+                }
+                else
+                {
+                    inClause += ')';
+                }
+            }
+            return inClause;
         }
     }
 }
