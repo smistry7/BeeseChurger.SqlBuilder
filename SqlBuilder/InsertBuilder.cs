@@ -79,7 +79,15 @@ namespace BeeseChurger.SqlBuilder
         {
             foreach (var value in values)
             {
-                _sql.Append($"{value.ToSqlParameter()}, ");
+                if (value != null)
+                {
+                    _sql.Append($"{value.ToSqlParameter()}, ");
+                }
+                else
+                {
+                    _sql.Append($"NULL, ");
+                }
+                
             }
             _sql.RemoveTrailingComma();
             _sql.Append(") ");

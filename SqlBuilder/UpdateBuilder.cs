@@ -35,7 +35,15 @@ namespace BeeseChurger.SqlBuilder
         /// <inheritdoc/>
         public ISetBuilder Set(string field, object value)
         {
-            _sql.Append($"{field} = {value.ToSqlParameter()}, ");
+            if (value != null)
+            {
+                _sql.Append($"{field} = {value.ToSqlParameter()}, ");
+            }
+            else 
+            {
+                _sql.Append($"{field} = NULL");
+            }
+            
             return this;
         }
 
