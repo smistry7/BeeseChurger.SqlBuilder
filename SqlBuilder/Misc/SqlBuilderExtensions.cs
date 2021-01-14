@@ -30,7 +30,7 @@ namespace BeeseChurger.SqlBuilder.Misc
             }
             else if (parameter is DateTime)
             {
-                returnString = $"'{((DateTime)parameter).ToString("yyyy-MM-dd h:mm tt")}'";
+                returnString = $"'{((DateTime)parameter).ToString("s")}'";
             }
             else if (parameter is bool)
             {
@@ -61,7 +61,7 @@ namespace BeeseChurger.SqlBuilder.Misc
                     returnString = $"'{parameter}'";
                     break;
                 case SqlDbType.DateTime:
-                    returnString = $"'{((DateTime)parameter).ToString("yyyy-MM-dd h:mm tt")}'";
+                    returnString = $"'{((DateTime)parameter).ToString("s")}'";
                     break;
                 case SqlDbType.Bit:
                     returnString = (bool)parameter ? "1" : "0";
