@@ -41,7 +41,7 @@ namespace BeeseChurger.SqlBuilder
             }
             else 
             {
-                _sql.Append($"{field} = NULL");
+                _sql.Append($"{field} = NULL, ");
             }
             
             return this;
