@@ -2,6 +2,7 @@
 using BeeseChurger.SqlBuilder.Builders.Select;
 using BeeseChurger.SqlBuilder.Misc;
 using System;
+using System.Collections.Generic;
 using System.Text;
 
 namespace BeeseChurger.SqlBuilder
@@ -57,6 +58,11 @@ namespace BeeseChurger.SqlBuilder
             {
                 _sql.Append($"WHERE {field} = {value.ToSqlParameter()} ");
             }
+            return this;
+        }
+        public IWhereBuilder WhereIn<T>(string field, IEnumerable<T> list)
+        {
+            _sql.Append($"WHERE {field} IN {list.ToInClause()} ");
             return this;
         }
 
