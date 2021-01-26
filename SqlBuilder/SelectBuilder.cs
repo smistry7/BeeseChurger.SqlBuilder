@@ -60,6 +60,7 @@ namespace BeeseChurger.SqlBuilder
             }
             return this;
         }
+        /// <inheritdoc/>
         public IWhereBuilder WhereIn<T>(string field, IEnumerable<T> list)
         {
             _sql.Append($"WHERE {field} IN {list.ToInClause()} ");

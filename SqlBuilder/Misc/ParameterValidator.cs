@@ -18,7 +18,7 @@ namespace BeeseChurger.SqlBuilder.Misc
         /// <returns>True if it does contain any of the keywords, False if not.</returns>
         public static string HandleSqlInjection(this string userInput)
         {
-            string[] sqlCheckList = { "--",";--",";","/*","*/","@@","@" };
+            string[] sqlCheckList = { "--",";--",";","/*","*/","@@" };
 
             string CheckString = userInput.Replace("'", "''");
 
