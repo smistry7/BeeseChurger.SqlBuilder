@@ -42,8 +42,8 @@ Console.WriteLine(builder.Build());
 var builder = SelectBuilder.Init()
     .Select("TOP(100) *")
     .From("table1")
-    .InnerJoin("table2)
-    .On("table1.Id = table2.t1Id)
+    .InnerJoin("table2")
+    .On("table1.Id = table2.t1Id")
 Console.WriteLine(builder.Build()); 
 // SELECT TOP(100) * FROM table INNER JOIN table2 ON table1.Id = table2.t1Id ;
 
@@ -84,6 +84,20 @@ Console.WriteLine(builder.Build());
 // INSERT INTO table (col1, col2) VALUES (1, 'skdajhfla') ;
 
 ```
+
+
+<h4>DELETE Queries </h4>
+
+```csharp
+var builder = DeleteBuilder
+    .DeleteFrom("table")
+    .Where("id", 5)
+    .Or("age < 14")
+Console.WriteLine(builder.Build()); 
+//DELETE FROM table WHERE id = 5 OR age < 14 ;
+
+```
+
 
 <h3>Submitting Issues </h3>
 
