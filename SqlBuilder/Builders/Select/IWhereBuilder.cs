@@ -45,17 +45,6 @@ namespace BeeseChurger.SqlBuilder.Builders.Select
         /// <param name="orderBy">field/column to order by</param>
         /// <returns></returns>
         IOrderByBuilder OrderBy(string orderBy);
-        /// <summary>
-        /// The Paginate Method
-        /// </summary>
-        /// <example>
-        /// <code>
-        /// builder.Select("*").From("table").Paginate(4, 20);
-        /// </code>
-        /// </example>
-        /// <param name="pageNumber">integer of the page number to retrieve</param>
-        /// <param name="pageSize">integer of the page size</param>
-        /// <returns></returns>
-        ISqlQueryBuilder Paginate(int pageNumber, int pageSize);
+     
     }
 }

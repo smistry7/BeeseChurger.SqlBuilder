@@ -3,20 +3,19 @@
     /// <summary>
     /// The IOrderByBuilder interface.
     /// </summary>
-    public interface IOrderByBuilder
+    public interface IOrderByBuilder : ISqlQueryBuilder
     {
         /// <summary>
-        /// The Ascending Method
-        /// 
-        /// Use this after an OrderBy Method to add an ASC to your SQL query
+        /// The Paginate Method
         /// </summary>
-        IFromBuilder Ascending();
-        /// <summary>
-        /// The Descending Method
-        /// 
-        /// Use this Method after an OrderBy to add a DESC to your SQL query
-        /// </summary>
+        /// <example>
+        /// <code>
+        /// builder.Select("*").From("table").Paginate(4, 20);
+        /// </code>
+        /// </example>
+        /// <param name="pageNumber">integer of the page number to retrieve</param>
+        /// <param name="pageSize">integer of the page size</param>
         /// <returns></returns>
-        IFromBuilder Descending();
+        ISqlQueryBuilder Paginate(int pageNumber, int pageSize);
     }
 }

@@ -38,8 +38,7 @@ namespace BeeseChurger.SqlBuilder.Tests.Builders
                 .Select("*")
                 .From("table1")
                 .Where($"id = 1")
-                .OrderBy("AddedDate")
-                .Ascending();
+                .OrderBy("AddedDate ASC");
             builder.Build().Should().Be("SELECT * FROM table1 WHERE id = 1 ORDER BY AddedDate ASC ;");
         }
 
@@ -71,8 +70,7 @@ namespace BeeseChurger.SqlBuilder.Tests.Builders
                 .On("t1.id = t3.t1Id")
                 .Where($"t1.id = 4")
                 .And($"t1.name like 'Shyam'")
-                .OrderBy("t2.field")
-                .Ascending();
+                .OrderBy("t2.field ASC");
             builder.Build().Should()
                 .Be("SELECT t1.blah FROM table1 t1 INNER JOIN table2 t2 ON t1.id = t2.t1Id " +
                 "LEFT JOIN table3 t3 ON t1.id = t3.t1Id WHERE t1.id = 4 AND t1.name like 'Shyam' ORDER BY t2.field ASC ;");
@@ -99,8 +97,9 @@ namespace BeeseChurger.SqlBuilder.Tests.Builders
                 .Select("*")
                 .From("table")
                 .Where("x", 3)
+                .OrderBy("y")
                 .Paginate(1, 2);
-            builder.Build().Should().Be("SELECT * FROM table WHERE x = 3 OFFSET 0 ROWS FETCH NEXT 2 ROWS ONLY ;");
+            builder.Build().Should().Be("SELECT * FROM table WHERE x = 3 ORDER BY y OFFSET 0 ROWS FETCH NEXT 2 ROWS ONLY ;");
         }
         [Fact]
         public void BuildReturnsCorrectStringWithMultipleSelects()
