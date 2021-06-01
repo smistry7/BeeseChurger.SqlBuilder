@@ -1,16 +1,16 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <PackageId>BeeseChurger.SqlBuilder</PackageId>
-    <Version>2.0.0-RC.1</Version>
+    <Version>2.0.0-RC.3</Version>
     <Authors>SMistry7</Authors>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <RepositoryUrl>https://github.com/smistry7/BeeseChurger.SqlBuilder</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageIcon>BC.jpg</PackageIcon>
     <description>A simple fluent builder for building SQL expressions without the need for a database connection</description>
-    <releaseNotes>Added SQL Injection prevention code</releaseNotes>
+    <releaseNotes>Resolve where in method for empty lists</releaseNotes>
     <copyright>MIT License</copyright>
     <tags>SQL fluent builder</tags>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
