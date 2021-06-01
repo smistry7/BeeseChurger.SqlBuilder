@@ -11,7 +11,7 @@ on:
 
 jobs:
   build:
-    runs-on: windows-latest
+    runs-on: ubuntu-18.04
     name: Update NuGet package
     steps:
     - uses: actions/checkout@v2
@@ -19,8 +19,6 @@ jobs:
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 3.1.101
-    - name: Setup MSBuild Path
-      uses: warrenbuckley/Setup-MSBuild@v1
     - name: Create NuGet Package
       run: dotnet pack -c Release
       working-directory: SqlBuilder   
