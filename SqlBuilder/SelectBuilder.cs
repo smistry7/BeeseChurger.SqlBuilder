@@ -3,6 +3,7 @@ using BeeseChurger.SqlBuilder.Builders.Select;
 using BeeseChurger.SqlBuilder.Misc;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace BeeseChurger.SqlBuilder
@@ -63,7 +64,10 @@ namespace BeeseChurger.SqlBuilder
         /// <inheritdoc/>
         public IWhereBuilder WhereIn<T>(string field, IEnumerable<T> list)
         {
-            _sql.Append($"WHERE {field} IN {list.ToInClause()} ");
+            if(list != null && list.Any())
+            {
+                _sql.Append($"WHERE {field} IN {list.ToInClause()} ");
+            }
             return this;
         }
 

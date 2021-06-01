@@ -124,5 +124,6 @@ namespace BeeseChurger.SqlBuilder.Tests.Builders
 
             builder.Build().Should().Be("SELECT * FROM table WHERE b = 1 ;");
         }
+       
     }
 }
