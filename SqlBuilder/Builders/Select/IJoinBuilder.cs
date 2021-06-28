@@ -1,5 +1,8 @@
 ﻿namespace BeeseChurger.SqlBuilder.Builders.Select
 {
+    /// <summary>
+    /// The IJoinBuilder interface.
+    /// </summary>
     public interface IJoinBuilder
     {
         /// <summary>

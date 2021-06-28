@@ -13,8 +13,8 @@ namespace BeeseChurger.SqlBuilder.Tests.Builders
                 .Init()
                 .Select("*")
                 .From("table")
-                .Where("x = 2")
-                .And("y = 'John'");
+                .Where("x", 2)
+                .And($"y = 'John'");
             builder.Build().Should().Be("SELECT * FROM table WHERE x = 2 AND y = 'John' ;");
         }
 
@@ -37,22 +37,22 @@ namespace BeeseChurger.SqlBuilder.Tests.Builders
                 .Init()
                 .Select("*")
                 .From("table1")
-                .Where("id = 1")
-                .OrderBy("AddedDate")
-                .Ascending();
+                .Where($"id = 1")
+                .OrderBy("AddedDate ASC");
             builder.Build().Should().Be("SELECT * FROM table1 WHERE id = 1 ORDER BY AddedDate ASC ;");
         }
 
         [Fact]
         public void BuildReturnsCorrectStringWithAndOr()
         {
+            var a = "xyz";
             var builder = SelectBuilder
                 .Init()
                 .Select("*")
                 .From("wherever")
-                .Where("abc = 'xyz'")
-                .And("cor = 12")
-                .Or("x LIKE 'sad'");
+                .Where($"abc = {a}")
+                .And($"cor = 12")
+                .Or($"x LIKE 'sad'");
 
             builder.Build().Should().Be("SELECT * FROM wherever WHERE abc = 'xyz' AND cor = 12 OR x LIKE 'sad' ;");
         }
@@ -68,10 +68,9 @@ namespace BeeseChurger.SqlBuilder.Tests.Builders
                 .On("t1.id = t2.t1Id")
                 .LeftJoin("table3 t3")
                 .On("t1.id = t3.t1Id")
-                .Where("t1.id = 4")
-                .And("t1.name like 'Shyam'")
-                .OrderBy("t2.field")
-                .Ascending();
+                .Where($"t1.id = 4")
+                .And($"t1.name like 'Shyam'")
+                .OrderBy("t2.field ASC");
             builder.Build().Should()
                 .Be("SELECT t1.blah FROM table1 t1 INNER JOIN table2 t2 ON t1.id = t2.t1Id " +
                 "LEFT JOIN table3 t3 ON t1.id = t3.t1Id WHERE t1.id = 4 AND t1.name like 'Shyam' ORDER BY t2.field ASC ;");
@@ -88,7 +87,7 @@ namespace BeeseChurger.SqlBuilder.Tests.Builders
                 .Where("x", 5)
                 .And("y", "john")
                 .Or("z", dateTime);
-            builder.Build().Should().Be($"SELECT * FROM table WHERE x = 5 AND y = 'john' OR z = '{dateTime.ToString("yyyy-MM-dd h:mm tt")}' ;");
+            builder.Build().Should().Be($"SELECT * FROM table WHERE x = 5 AND y = 'john' OR z = '{dateTime.ToString("s")}' ;");
         }
         [Fact]
         public void BuildReturnsCorrectStringWithPagination()
@@ -98,8 +97,9 @@ namespace BeeseChurger.SqlBuilder.Tests.Builders
                 .Select("*")
                 .From("table")
                 .Where("x", 3)
+                .OrderBy("y")
                 .Paginate(1, 2);
-            builder.Build().Should().Be("SELECT * FROM table WHERE x = 3 OFFSET 0 ROWS FETCH NEXT 2 ROWS ONLY ;");
+            builder.Build().Should().Be("SELECT * FROM table WHERE x = 3 ORDER BY y OFFSET 0 ROWS FETCH NEXT 2 ROWS ONLY ;");
         }
         [Fact]
         public void BuildReturnsCorrectStringWithMultipleSelects()
@@ -124,5 +124,6 @@ namespace BeeseChurger.SqlBuilder.Tests.Builders
 
             builder.Build().Should().Be("SELECT * FROM table WHERE b = 1 ;");
         }
+       
     }
 }

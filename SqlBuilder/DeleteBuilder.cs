@@ -7,6 +7,9 @@ using System.Text;
 
 namespace BeeseChurger.SqlBuilder
 {
+    /// <summary>
+    /// Fluent builder class to build a delete from SQL query.
+    /// </summary>
     public sealed class DeleteBuilder : IDeleteFromBuilder, IWhereBuilder, ISqlQueryBuilder
     {
         private StringBuilder _sql;
@@ -16,15 +19,24 @@ namespace BeeseChurger.SqlBuilder
             _sql.Append($"DELETE FROM {table} ");
         }
 
+        /// <summary>
+        /// The DeleteFrom method
+        /// 
+        /// To be used to initialise a new DeleteFrom SQL statement.
+        /// </summary>
+        /// <param name="table">string containing the table to be deleted from.</param>
+        /// <returns>IDeleteFromBuilder to add to the statement.</returns>
         public static IDeleteFromBuilder DeleteFrom(string table) => new DeleteBuilder(table);
 
 
-        public IWhereBuilder Where(string where)
+        /// <inheritdoc/>
+        public IWhereBuilder Where(FormattableString where)
         {
-            _sql.Append($"WHERE {where} ");
+            _sql.Append($"WHERE {where.HandleSqlInjection()} ");
             return this;
         }
 
+        /// <inheritdoc/>
         public IWhereBuilder Where(string field, object value)
         {
             if (value != null)
@@ -34,11 +46,12 @@ namespace BeeseChurger.SqlBuilder
             return this;
         }
 
-        public IWhereBuilder And(string where)
+        /// <inheritdoc/>
+        public IWhereBuilder And(FormattableString where)
         {
             if (_sql.ToString().Contains("WHERE"))
             {
-                _sql.Append($"AND {where} ");
+                _sql.Append($"AND {where.HandleSqlInjection()} ");
             }
             else
             {
@@ -48,6 +61,7 @@ namespace BeeseChurger.SqlBuilder
             return this;
         }
 
+        /// <inheritdoc/>
         public IWhereBuilder And(string field, object value)
         {
             if (value != null)
@@ -64,11 +78,12 @@ namespace BeeseChurger.SqlBuilder
             return this;
         }
 
-        public IWhereBuilder Or(string where)
+        /// <inheritdoc/>
+        public IWhereBuilder Or(FormattableString where)
         {
             if (_sql.ToString().Contains("WHERE"))
             {
-                _sql.Append($"OR {where} ");
+                _sql.Append($"OR {where.HandleSqlInjection()} ");
             }
             else
             {
@@ -77,6 +92,7 @@ namespace BeeseChurger.SqlBuilder
             return this;
         }
 
+        /// <inheritdoc/>
         public IWhereBuilder Or(string field, object value)
         {
             if (value != null)
@@ -93,6 +109,7 @@ namespace BeeseChurger.SqlBuilder
             return this;
         }
 
+        /// <inheritdoc/>
         public string Build()
         {
             _sql.Append(";");

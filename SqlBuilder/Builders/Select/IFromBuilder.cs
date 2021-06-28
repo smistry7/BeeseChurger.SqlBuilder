@@ -1,5 +1,11 @@
-﻿namespace BeeseChurger.SqlBuilder.Builders.Select
+﻿using System;
+using System.Collections.Generic;
+
+namespace BeeseChurger.SqlBuilder.Builders.Select
 {
+    /// <summary>
+    /// The IFromBuilder interface
+    /// </summary>
     public interface IFromBuilder : ISqlQueryBuilder
     {
         /// <summary>
@@ -14,7 +20,7 @@
         /// </code>
         /// </example>
         /// <param name="where">String representation of the where expression</param>
-        IWhereBuilder Where(string where);
+        IWhereBuilder Where(FormattableString where);
         /// <summary>
         /// The Where Method
         /// </summary>
@@ -27,6 +33,14 @@
         /// <param name="field">Field to be compared</param>
         /// <param name="value">Value the field should equal</param>
         IWhereBuilder Where(string field, object value);
+        /// <summary>
+        /// The WhereIn Method
+        /// </summary>
+        /// <typeparam name="T">Type for the in clause</typeparam>
+        /// <param name="field">Field to be compared</param>
+        /// <param name="list">Values to be inside the in clause.</param>
+        IWhereBuilder WhereIn<T>(string field, IEnumerable<T> list);
+
         /// <summary>
         /// The Inner Join Method
         /// 

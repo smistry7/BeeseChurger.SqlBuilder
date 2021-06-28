@@ -85,6 +85,20 @@ Console.WriteLine(builder.Build());
 
 ```
 
+
+<h4>DELETE Queries </h4>
+
+```csharp
+var builder = DeleteBuilder
+    .DeleteFrom("table")
+    .Where("id", 5)
+    .Or("age < 14")
+Console.WriteLine(builder.Build()); 
+//DELETE FROM table WHERE id = 5 OR age < 14 ;
+
+```
+
+
 <h3>Submitting Issues </h3>
 
 Have any feature requests or bugs? Create an issue and/or feel free to clone the repo and have a play!

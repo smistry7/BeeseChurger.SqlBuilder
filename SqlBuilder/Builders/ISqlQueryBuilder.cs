@@ -1,5 +1,8 @@
 ﻿namespace BeeseChurger.SqlBuilder.Builders
 {
+    /// <summary>
+    /// The ISqlQueryBuilder interface.
+    /// </summary>
     public interface ISqlQueryBuilder
     {
         /// <summary>
