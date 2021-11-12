@@ -53,6 +53,19 @@ namespace BeeseChurger.SqlBuilder.Tests.Builders
                 .Value(31);
             builder.Build().Should().Be($"INSERT INTO table (col1, col2, col3 ) VALUES (NULL, 'dsfkjnakl', 31 ) ;");
         }
+        [Fact]
+        public void ParameterisedBuilderShouldReturnCorrectly()
+        {
+            var name = "shyam";
+            var description = "programmer";
+
+            var builder = InsertBuilder.InsertInto("table", new List<string> { "name", "description" })
+                .Value(name)
+                .Value(description)
+                .Build();
+            builder.Should().Be("INSERT INTO table (name, description ) VALUES ('shyam', 'programmer' ) ;");
+                
+        }
 
     }
 }

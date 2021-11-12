@@ -28,5 +28,13 @@ namespace BeeseChurger.SqlBuilder.Tests.Builders
                 .Set("x", null).Where("id", 4);
             builder.Build().Should().Be("UPDATE table SET x = NULL WHERE id = 4 ;");
         }
+        [Fact]
+        public void ShouldConvertParamsToSqlParams()
+        {
+            var name = "shyam";
+            var desc = "programmer";
+            var builder = UpdateBuilder.Update("table").Set("name", name).Set("description", desc).Where($"id = {name}");
+            builder.Build().Should().Be("UPDATE table SET name = 'shyam', description = 'programmer' WHERE id = 'shyam' ;");
+        }
     }
 }
