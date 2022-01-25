@@ -17,8 +17,9 @@ namespace BeeseChurger.SqlBuilder.Tests.Builders
                 .InsertInto("table", new string[] { "col1", "col2", "col3" })
                 .Values(new object[] { 1, "skdajhfla", dt });
 
-            builder.Build().Should().Be($"INSERT INTO table (col1, col2, col3 ) VALUES (1, 'skdajhfla', {dt.ToSqlParameter()} ) ;");
+            builder.Build().Should().Be($"INSERT INTO table (col1, col2, col3) VALUES (1, 'skdajhfla', {dt.ToSqlParameter()}) ;");
         }
+
         [Fact]
         public void ShouldBuildCorrectStringMultipleValue()
         {
@@ -29,8 +30,9 @@ namespace BeeseChurger.SqlBuilder.Tests.Builders
                 .Value("skdajhfla")
                 .Value(dt);
 
-            builder.Build().Should().Be($"INSERT INTO table (col1, col2, col3 ) VALUES (1, 'skdajhfla', {dt.ToSqlParameter()} ) ;");
+            builder.Build().Should().Be($"INSERT INTO table (col1, col2, col3) VALUES (1, 'skdajhfla', {dt.ToSqlParameter()}) ;");
         }
+
         [Fact]
         public void ShouldBuildCorrectStringNoColumns()
         {
@@ -41,8 +43,9 @@ namespace BeeseChurger.SqlBuilder.Tests.Builders
                 .Value("skdajhfla")
                 .Value(dt);
 
-            builder.Build().Should().Be($"INSERT INTO table VALUES (1, 'skdajhfla', {dt.ToSqlParameter()} ) ;");
+            builder.Build().Should().Be($"INSERT INTO table VALUES (1, 'skdajhfla', {dt.ToSqlParameter()}) ;");
         }
+
         [Fact]
         public void ShouldHandleNullsCorrectly()
         {
@@ -51,8 +54,9 @@ namespace BeeseChurger.SqlBuilder.Tests.Builders
                 .Value(null)
                 .Value("dsfkjnakl")
                 .Value(31);
-            builder.Build().Should().Be($"INSERT INTO table (col1, col2, col3 ) VALUES (NULL, 'dsfkjnakl', 31 ) ;");
+            builder.Build().Should().Be($"INSERT INTO table (col1, col2, col3) VALUES (NULL, 'dsfkjnakl', 31) ;");
         }
+
         [Fact]
         public void ParameterisedBuilderShouldReturnCorrectly()
         {
@@ -63,7 +67,7 @@ namespace BeeseChurger.SqlBuilder.Tests.Builders
                 .Value(name)
                 .Value(description)
                 .Build();
-            builder.Should().Be("INSERT INTO table (name, description ) VALUES ('shyam', 'programmer' ) ;");
+            builder.Should().Be("INSERT INTO table (name, description) VALUES ('shyam', 'programmer') ;");
                 
         }
 

@@ -93,21 +93,9 @@ namespace BeeseChurger.SqlBuilder.Misc
         /// <returns>String representation to be passed to the database as an in clause</returns>
         public static string ToInClause<T>(this IEnumerable<T> list)
         {
-            var inClause = "(";
-            var arr = list.ToArray();
-            for (int i=0; i < arr.Length; i++)
-            {
-                inClause += arr[i].ToSqlParameter();
-                if(i != arr.Length - 1)
-                {
-                    inClause += ',';
-                }
-                else
-                {
-                    inClause += ')';
-                }
-            }
-            return inClause;
+            var arr = list.Select(x => x.ToSqlParameter()).ToArray();
+            var values = $"({string.Join(",", arr)})";
+            return values;
         }
     }
 }

@@ -26,7 +26,6 @@ namespace BeeseChurger.SqlBuilder
             _sql.Append("VALUES (");
         }
 
-
         /// <summary>
         /// The Insert Into Method
         ///
@@ -66,30 +65,24 @@ namespace BeeseChurger.SqlBuilder
 
         private void AppendColumns(IEnumerable<string> columns)
         {
-            _sql.Append("(");
-            foreach (var column in columns)
-            {
-                _sql.Append($"{column}, ");
-            }
-            _sql.RemoveTrailingComma();
-            _sql.Append(") ");
+            _sql.Append($"({string.Join(", ", columns)}) ");
         }
 
         private void AppendValues(IEnumerable<object> values)
         {
+            var separator = "";
             foreach (var value in values)
             {
                 if (value != null)
                 {
-                    _sql.Append($"{value.ToSqlParameter()}, ");
+                    _sql.Append($"{separator}{value.ToSqlParameter()}");
                 }
                 else
                 {
-                    _sql.Append($"NULL, ");
+                    _sql.Append("NULL");
                 }
-                
+                separator = ", ";
             }
-            _sql.RemoveTrailingComma();
             _sql.Append(") ");
         }
     }
