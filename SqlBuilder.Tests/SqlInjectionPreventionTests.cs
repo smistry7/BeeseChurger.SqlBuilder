@@ -52,7 +52,7 @@ namespace BeeseChurger.SqlBuilder.Tests
              var sql = UpdateBuilder.Update("table")
                 .Set("name", injectionParam)
                 .Build();
-            sql.Should().Be("UPDATE table SET name = 'shyam''s egg' ;");
+            sql.Should().Be("UPDATE table SET name = 'shyam''s egg';");
         }
     }
 }

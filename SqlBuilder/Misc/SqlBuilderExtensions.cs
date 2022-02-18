@@ -72,18 +72,6 @@ namespace BeeseChurger.SqlBuilder.Misc
             }
             return returnString;
         }
-        /// <summary>
-        /// Extension method to remove a trailing comma
-        /// Removes trailing comma at the second to last position in a string builder
-        /// </summary>
-        /// <param name="sb"></param>
-        public static void RemoveTrailingComma(this StringBuilder sb)
-        {
-            if (sb.ToString().EndsWith(", "))
-            {
-                sb = sb.Remove(sb.Length - 2, 1);
-            }
-        }
 
         /// <summary>
         /// This can be used to convert a list to an in clause when using any of the Builders

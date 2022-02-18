@@ -14,7 +14,7 @@ namespace BeeseChurger.SqlBuilder
         private UpdateBuilder(string table)
         {
             _sql = new StringBuilder();
-            _sql.Append($"UPDATE {table} SET ");
+            _sql.Append($"UPDATE {table} SET");
         }
 
         /// <inheritdoc/>
@@ -32,34 +32,33 @@ namespace BeeseChurger.SqlBuilder
             return this;
         }
 
+        private string _setSeparator = " ";
         /// <inheritdoc/>
         public ISetBuilder Set(string field, object value)
         {
             if (value != null)
             {
-                _sql.Append($"{field} = {value.ToSqlParameter()}, ");
+                _sql.Append($"{_setSeparator}{field} = {value.ToSqlParameter()}");
             }
             else 
             {
-                _sql.Append($"{field} = NULL, ");
+                _sql.Append($"{_setSeparator}{field} = NULL");
             }
-            
+            _setSeparator = ", ";
             return this;
         }
 
         /// <inheritdoc/>
         public IWhereBuilder Where(FormattableString where)
         {
-            _sql.RemoveTrailingComma();
-            _sql.Append($"WHERE {where.HandleSqlInjection()} ");
+            _sql.Append($" WHERE {where.HandleSqlInjection()} ");
             return this;
         }
 
         /// <inheritdoc/>
         public IWhereBuilder Where(string field, object value)
         {
-            _sql.RemoveTrailingComma();
-            _sql.Append($"WHERE {field} = {value.ToSqlParameter()} ");
+            _sql.Append($" WHERE {field} = {value.ToSqlParameter()} ");
             return this;
         }
 
@@ -94,7 +93,6 @@ namespace BeeseChurger.SqlBuilder
         /// <inheritdoc/>
         public string Build()
         {
-             _sql.RemoveTrailingComma();
             _sql.Append(";");
             return _sql.ToString();
         }
