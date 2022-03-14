@@ -72,18 +72,6 @@ namespace BeeseChurger.SqlBuilder.Misc
             }
             return returnString;
         }
-        /// <summary>
-        /// Extension method to remove a trailing comma
-        /// Removes trailing comma at the second to last position in a string builder
-        /// </summary>
-        /// <param name="sb"></param>
-        public static void RemoveTrailingComma(this StringBuilder sb)
-        {
-            if (sb.ToString().EndsWith(", "))
-            {
-                sb = sb.Remove(sb.Length - 2, 1);
-            }
-        }
 
         /// <summary>
         /// This can be used to convert a list to an in clause when using any of the Builders
@@ -93,21 +81,9 @@ namespace BeeseChurger.SqlBuilder.Misc
         /// <returns>String representation to be passed to the database as an in clause</returns>
         public static string ToInClause<T>(this IEnumerable<T> list)
         {
-            var inClause = "(";
-            var arr = list.ToArray();
-            for (int i=0; i < arr.Length; i++)
-            {
-                inClause += arr[i].ToSqlParameter();
-                if(i != arr.Length - 1)
-                {
-                    inClause += ',';
-                }
-                else
-                {
-                    inClause += ')';
-                }
-            }
-            return inClause;
+            var arr = list.Select(x => x.ToSqlParameter()).ToArray();
+            var values = $"({string.Join(",", arr)})";
+            return values;
         }
     }
 }

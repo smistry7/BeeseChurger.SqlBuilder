@@ -28,18 +28,19 @@ namespace BeeseChurger.SqlBuilder
         /// <returns></returns>
         public static ISelectBuilder Init() => new SelectBuilder();
 
+        private List<string> _selects = new List<string>();
         /// <inheritdoc/>
         public ISelectBuilder Select(string select)
         {
-            _sql.Append($"{select}, ");
+            _selects.Add(select);
             return this;
         }
 
         /// <inheritdoc/>
         public IFromBuilder From(string table)
         {
-            _sql.RemoveTrailingComma();
-            _sql.Append($"FROM {table} ");
+            _sql.Append(string.Join(", ", _selects));
+            _sql.Append($" FROM {table} ");
             return this;
         }
 
@@ -49,8 +50,6 @@ namespace BeeseChurger.SqlBuilder
             _sql.Append($"WHERE {where.HandleSqlInjection()} ");
             return this;
         }
-
-        
 
         /// <inheritdoc/>
         public IWhereBuilder Where(string field, object value)
@@ -64,7 +63,7 @@ namespace BeeseChurger.SqlBuilder
         /// <inheritdoc/>
         public IWhereBuilder WhereIn<T>(string field, IEnumerable<T> list)
         {
-            if(list != null && list.Any())
+            if (list != null && list.Any())
             {
                 _sql.Append($"WHERE {field} IN {list.ToInClause()} ");
             }
@@ -198,6 +197,6 @@ namespace BeeseChurger.SqlBuilder
             return _sql.ToString();
         }
 
-   
+
     }
 }
