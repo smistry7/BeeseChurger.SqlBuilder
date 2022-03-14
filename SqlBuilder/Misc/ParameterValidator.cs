@@ -43,7 +43,7 @@ namespace BeeseChurger.SqlBuilder.Misc
             for (int i = 0; i < args.Length; i++)
             {
                 var newArg = str.GetArgument(i).ToSqlParameter();
-                result = str.ToString().Replace(str.GetArgument(i).ToString(), newArg.ToString());
+                result = str.ToString().Replace(str.GetArgument(i)!.ToString(), newArg.ToString());
             }
             if(args.Length == 0)
             {
