@@ -3,14 +3,14 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <PackageId>BeeseChurger.SqlBuilder</PackageId>
-    <Version>2.0.1-alpha.2</Version>
+    <Version>2.0.1</Version>
     <Authors>SMistry7</Authors>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <RepositoryUrl>https://github.com/smistry7/BeeseChurger.SqlBuilder</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageIcon>BC.jpg</PackageIcon>
     <description>A simple fluent builder for building SQL expressions without the need for a database connection</description>
-    <releaseNotes>Resolve where in method for empty lists</releaseNotes>
+    <releaseNotes>Minor refactors</releaseNotes>
     <copyright>MIT License</copyright>
     <tags>SQL fluent builder</tags>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
